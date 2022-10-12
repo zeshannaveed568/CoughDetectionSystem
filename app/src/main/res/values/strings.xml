@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">pulmonaryDisease</string>
+    <string name="appointments">Appointments</string>
+    <string name="doctors">Doctors</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chat">Chat</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="title">Pulmonary Diseases</string>
+    <string name="clickPatientSignUp">SIGN UP AS PATIENT</string>
+    <string name="clickDoctorSignUp">SIGN UP AS DOCTOR</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In!</string>
+    <string name="bgimage">bgImage</string>
+    <string name="bgImage">bgImage</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="cnic">cnic</string>
+    <string name="CNIC">CNIC</string>
+    <string name="choose_your_speciality">Choose Your Speciality</string>
+    <string name="info">Info</string>
+
+
+</resources>

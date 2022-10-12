@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/bottom_nav_dashboard"
+            android:title="@string/dashboard"
+            android:icon="@drawable/ic_baseline_dashboard_24"
+            app:cnb_backgroundColor="#525DAA"/>
+
+    <item android:id="@+id/bottom_nav_doctors"
+        android:title="@string/doctors"
+        android:icon="@drawable/doctor_logo_24"
+        app:cnb_backgroundColor="#525DAA"/>
+
+    <item android:id="@+id/bottom_nav_appointments"
+        android:title="@string/appointments"
+        android:icon="@drawable/ic_baseline_perm_contact_calendar_24"
+        app:cnb_backgroundColor="#525DAA"/>
+
+    <item android:id="@+id/bottom_nav_profile"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        app:cnb_backgroundColor="#525DAA"/>
+
+    <item android:id="@+id/bottom_nav_chat"
+        android:title="@string/chat"
+        android:icon="@drawable/ic_baseline_chat_24"
+        app:cnb_backgroundColor="#525DAA"/>
+
+
+
+
+
+
+
+
+
+</menu>

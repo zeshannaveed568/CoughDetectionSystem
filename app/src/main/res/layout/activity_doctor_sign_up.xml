@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoctorSignUpActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/bgImage"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_bg_screen_small"
+        app:layout_constraintHeight_percent=".27"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:shadowColor="#525DAA"
+        android:shadowDx="1"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="@string/already_have_an_account"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/txtSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:shadowColor="@color/white"
+        android:shadowDx="1"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="@string/sign_in"
+        android:textColor="#525DAA"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="@+id/textView10"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="630dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="593dp"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/editFullName"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/transparent_bg_bordered"
+                android:hint="@string/full_name"
+                android:inputType="text"
+                android:autofillHints="name"
+                android:padding="12dp" />
+
+            <EditText
+                android:id="@+id/editPhone"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/transparent_bg_bordered_button"
+                android:hint="@string/phone_number"
+                android:inputType="phone"
+                android:layout_marginTop="12dp"
+                android:padding="18dp"
+                android:autofillHints="phone"/>
+
+            <EditText
+                android:id="@+id/cNic"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/transparent_bg_bordered_button"
+                android:padding="18dp"
+                android:inputType="number"
+                android:hint="@string/CNIC"
+                android:layout_marginTop="6dp"
+                android:autofillHints="CNIC"
+                />
+
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/transparent_bg_bordered_button"
+                android:padding="18dp"
+                android:layout_marginTop="6dp"
+                />
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/transparent_bg_bordered"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:autofillHints="password"
+                android:padding="12dp" />
+
+            <Spinner
+                android:id="@+id/chooseSpeciality"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:padding="14dp"
+                android:background="@drawable/transparent_bg_bordered"
+                />
+
+            <Button
+                android:id="@+id/btSignUp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/transparent_bg_bordered_button"
+                android:text="@string/sign_up"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

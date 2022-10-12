@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "574521944707",
+    "project_id": "pulmonarydisease-837ef",
+    "storage_bucket": "pulmonarydisease-837ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574521944707:android:970c2377dc60126b3649b6",
+        "android_client_info": {
+          "package_name": "com.example.pulmonarydisease"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574521944707-8qh2n8309qqpf3cofn2662s0q1la4u0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5i58ZXHiEnoPek3bfFv6clB0N43Xvq_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574521944707-8qh2n8309qqpf3cofn2662s0q1la4u0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
