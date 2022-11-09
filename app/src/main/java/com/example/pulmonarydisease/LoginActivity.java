@@ -2,9 +2,7 @@ package com.example.pulmonarydisease;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
-import android.view.MotionEvent;
-import android.view.View;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,15 +16,18 @@ import com.example.pulmonarydisease.PatientDash.PatientDashActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity {
 
     LottieAnimationView animationView;
-    TextView btnSignUp, btnForgotPassword, btnLogin;
+    TextView btnSignUp, btnForgotPassword;
     EditText edtEmail;
     TextInputEditText edtPassword;
 
@@ -45,105 +46,105 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtPassword = findViewById(R.id.editPassword);
 
 
-
-
-
-
         animationView = findViewById(R.id.lottie);
         animationView.animate().setDuration(900000000).start();
 
         // Initialize Login Button
         btn_Login = findViewById(R.id.login_btn);
-        btn_Login.setOnClickListener(this);
+
+
 
         // Initialize SignUp Button
         btnSignUp = findViewById(R.id.txtSignUp);
-        btnSignUp.setOnClickListener(this);
 
 
         // Initialize Forgot Password Button
         btnForgotPassword = findViewById(R.id.forgotPassword);
-        btnForgotPassword.setOnClickListener(this);
+
 
         // Initialize com.example.doctorapp.Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
 
-    }
+        btnSignUp.setOnClickListener(v -> {
+            Intent intent =new Intent(LoginActivity.this, LoginSignUpActivity.class);
+            startActivity(intent);
+        });
 
-    @Override
-    public void onClick(View view) {
-
-        switch (view.getId()) {
-            case R.id.login_btn:
-                patientLogin();
-                break;
-            case R.id.txtSignUp:
-                startActivity(new Intent(this, DoctorPatientSignUp.class));
-                break;
-            case R.id.forgotPassword:
-                startActivity(new Intent(this, ForgotPasswordActivity.class));
-                break;
-        }
-
-    }
-
-
-    private void patientLogin() {
-        String email = edtEmail.getText().toString().trim();
-        String password = edtPassword.getText().toString().trim();
-//        String password = edtPassword.getText().toString().trim();
-
-        if (email.isEmpty()) {
-            edtEmail.setError("Email is required");
-            edtEmail.requestFocus();
-            return;
-        }
-
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            edtEmail.setError("Please enter a valid email");
-            edtEmail.requestFocus();
-            return;
-        }
-
-        if (password.isEmpty()) {
-            edtPassword.setError("Password is required");
-            edtPassword.requestFocus();
-            return;
-        }
-
-        if (password.length() < 8) {
-            edtPassword.setError("Minimum length of password should be 8");
-            edtPassword.requestFocus();
-            return;
-        }
-
-
-
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-
-                    FirebaseUser patient = FirebaseAuth.getInstance().getCurrentUser();
-
-                    if (patient.isEmailVerified()){
-                        startActivity(new Intent(LoginActivity.this, PatientDashActivity.class));
-                        finish();
-                    }
-                    else {
-                        patient.sendEmailVerification();
-                        Toast.makeText(LoginActivity.this, "Check your Email to Verify your Email", Toast.LENGTH_SHORT).show();
-                    }
-
-
-                } else {
-                    Toast.makeText(LoginActivity.this, "Login Failed! Check your Credentials", Toast.LENGTH_SHORT).show();
-                }
-            }
+        btnForgotPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+            startActivity(intent);
         });
 
 
+        btn_Login.setOnClickListener(v -> {
+            final String email = edtEmail.getText().toString().trim();
+            final String password = edtPassword.getText().toString().trim();
+
+            if (TextUtils.isEmpty(email)){
+                edtEmail.setError("Email is required");
+
+            }
+            if (TextUtils.isEmpty(password)){
+                edtPassword.setError("Password is required");
+
+            }
+
+            else{
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            if (user.isEmailVerified()){
+
+                                String uId = task.getResult().getUser().getUid();
+
+                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                firebaseDatabase.getReference().child("users").child(uId).child("type").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        int userType = snapshot.getValue(Integer.class);
+
+                                        if (userType == 1){
+                                            Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
+                                            startActivity(intent);
+                                        }
+                                        if (userType == 0){
+                                            Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);
+                                            startActivity(intent);
+
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+
+                                finish();
+                            }
+                            else {
+                                user.sendEmailVerification();
+                                Toast.makeText(LoginActivity.this, "Check your Email to Verify your Email", Toast.LENGTH_SHORT).show();
+                            }
+
+
+
+                        }
+                        else{
+                            Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+
+        });
 
     }
+
 }
