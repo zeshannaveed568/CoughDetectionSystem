@@ -7,7 +7,6 @@
     android:id="@+id/fragment_profile"
     tools:context=".com.example.doctorapp.BottomNav.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <ImageView
         android:id="@+id/imageView2"
