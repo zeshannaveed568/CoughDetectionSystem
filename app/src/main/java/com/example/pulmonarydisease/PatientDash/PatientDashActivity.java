@@ -36,7 +36,7 @@ public class PatientDashActivity extends AppCompatActivity {
         patientInfo = findViewById(R.id.btnInfoPatient);
 
 
-        // defining the signout button
+        // defining the sign out button
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

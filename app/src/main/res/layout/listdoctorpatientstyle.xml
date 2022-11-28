@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="12dp"
+    app:cardCornerRadius="12dp"
+    android:layout_margin="10dp">
+    <LinearLayout
+        android:layout_marginVertical="10dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/doctorPatientImg"
+            android:layout_marginRight="20dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"/>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/doctorPatientName"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/senbold"
+                android:textColor="#525DAA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: "/>
+
+
+            <TextView
+                android:id="@+id/doctorPatientEmail"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/senregular"
+                android:textColor="#525DAA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: "/>
+
+            <TextView
+                android:id="@+id/doctorPatientType"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/senregular"
+                android:textColor="#525DAA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: "/>
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/imgViewChat"
+            android:layout_marginVertical="20dp"
+            android:background="@color/transparent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/ic_baseline_message_24" />
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

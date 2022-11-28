@@ -24,6 +24,18 @@
     <string name="CNIC">CNIC</string>
     <string name="choose_your_speciality">Choose Your Speciality</string>
     <string name="info">Info</string>
+    <string name="questionnaire">QUESTIONNAIRE</string>
+    <string name="submit">SUBMIT</string>
+    <string name="select_Disease_Questionaire">1.  Select Disease if you are suffering from any?</string>
+    <string name="covid_questionniare">10. Have you ever been COVID Positive?</string>
+    <string name="sleeping_hours_questionniare">9. What are your average Sleeping Hours?</string>
+    <string name="industrial_area_questionniare">8. Do you Live near Industrial Area?</string>
+    <string name="smoke_questionniare">7. Do you Smoke?</string>
+    <string name="genetic_disease_questionniare">6. Did your family have any Genetic Disease?</string>
+    <string name="any_allergies_questionniare">5. List down if you have any allergies?</string>
+    <string name="any_surgery_questionniare">4. Have you went through any surgery?</string>
+    <string name="physical_activities_questionniare">3. Your Physical Activities?</string>
+    <string name="weight_questionniare">2. What is your weight?</string>
 
 
 </resources>

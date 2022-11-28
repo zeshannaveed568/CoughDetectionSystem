@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:fontFamily="@font/senbold"
+        android:text="@string/questionnaire"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="690dp"
+        android:background="@drawable/questionnaire_bg"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ScrollView
+            android:layout_marginTop="40dp"
+            android:layout_width="350dp"
+            android:layout_gravity="center"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/select_Disease_Questionaire"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/weight_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_gravity="center"
+                    android:inputType="number"
+                    android:background="@drawable/transparent_bg_bordered"
+                    android:hint="Enter your Weight"
+                    android:padding="10dp" />
+
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/physical_activities_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_gravity="center"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:inputType="text"
+                    android:background="@drawable/transparent_bg_bordered"
+                    android:hint="Enter your Physical Activities"
+                    android:padding="12dp" />
+
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/any_surgery_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_gravity="center"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:inputType="text"
+                    android:background="@drawable/transparent_bg_bordered"
+                    android:hint="Enter any Surgery"
+                    android:padding="12dp" />
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/any_allergies_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_gravity="center"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:inputType="text"
+                    android:background="@drawable/transparent_bg_bordered"
+                    android:hint="Enter any Allergies"
+                    android:padding="12dp" />
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/genetic_disease_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <EditText
+                    android:layout_gravity="center"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:inputType="text"
+                    android:background="@drawable/transparent_bg_bordered"
+                    android:hint="Enter any Genetic Disease"
+                    android:padding="12dp" />
+
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/smoke_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <Spinner
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/industrial_area_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <Spinner
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/sleeping_hours_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:layout_gravity="center"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:inputType="number"
+                    android:background="@drawable/transparent_bg_bordered"
+                    android:hint="Hours of Sleep"
+                    android:padding="12dp" />
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="20sp"
+                    android:textColor="#525DAA"
+                    android:fontFamily="@font/senregular"
+                    android:textSize="18sp"
+                    android:text="@string/covid_questionniare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <Spinner
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+
+                <Button
+                    android:layout_marginTop="100dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="80dp"
+                    android:id="@+id/btnSubmitQuestionnaire"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/transparent_bg_bordered_button"
+                    android:text="@string/submit"
+                    android:layout_marginStart="0dp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

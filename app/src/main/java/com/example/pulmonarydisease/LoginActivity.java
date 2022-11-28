@@ -1,6 +1,7 @@
 package com.example.pulmonarydisease;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -99,7 +100,9 @@ public class LoginActivity extends AppCompatActivity {
 
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+
                             if (user.isEmailVerified()){
+
 
                                 String uId = task.getResult().getUser().getUid();
 
@@ -112,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                                         if (userType == 1){
                                             Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
                                             startActivity(intent);
+
                                         }
                                         if (userType == 0){
                                             Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);

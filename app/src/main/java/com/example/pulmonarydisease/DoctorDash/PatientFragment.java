@@ -3,22 +3,28 @@ package com.example.pulmonarydisease.DoctorDash;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.pulmonarydisease.Adapter.PatientAdapter;
+import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.R;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PatientFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class PatientFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    RecyclerView patientRecyclerView;
+    PatientAdapter patientAdapter;
+
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -30,14 +36,7 @@ public class PatientFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PatientFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static PatientFragment newInstance(String param1, String param2) {
         PatientFragment fragment = new PatientFragment();
@@ -61,6 +60,40 @@ public class PatientFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_patient, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_patient, container,false);
+
+        patientRecyclerView = (RecyclerView)view.findViewById(R.id.listPatientRecycler);
+        patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        FirebaseRecyclerOptions<PatientInfoFirebase> Options =
+                new FirebaseRecyclerOptions.Builder<PatientInfoFirebase>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users"),
+                                PatientInfoFirebase.class).build();
+
+
+
+        patientAdapter = new PatientAdapter(Options);
+        patientRecyclerView.setAdapter(patientAdapter);
+
+        return view;
+
     }
+
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        patientAdapter.startListening();
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        patientAdapter.stopListening();
+    }
+
+
+
 }
