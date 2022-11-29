@@ -104,6 +104,7 @@ public class DoctorSignUpActivity extends AppCompatActivity {
                     edtPhone.requestFocus();
                 }
 
+
                 else{
                     mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override

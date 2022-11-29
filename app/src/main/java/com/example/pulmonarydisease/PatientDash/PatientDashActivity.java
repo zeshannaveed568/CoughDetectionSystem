@@ -8,6 +8,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.pulmonarydisease.Fragments.AppointmentFragment;
+import com.example.pulmonarydisease.Fragments.ChatFragment;
+import com.example.pulmonarydisease.Fragments.ProfileFragment;
 import com.example.pulmonarydisease.LoginActivity;
 import com.example.pulmonarydisease.PatientInfoActivity;
 import com.example.pulmonarydisease.R;
@@ -17,9 +20,6 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 public class PatientDashActivity extends AppCompatActivity {
 
 
-
-    Button btnLogout, patientInfo;
-
     ChipNavigationBar chipNavigationBar;
 
 
@@ -28,36 +28,7 @@ public class PatientDashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_dash);
 
-        // Initializing the Sign Out Button
-        btnLogout = findViewById(R.id.btnSignOut);
 
-
-        // Initializing the Info Button
-        patientInfo = findViewById(R.id.btnInfoPatient);
-
-
-        // defining the sign out button
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(PatientDashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-
-        // Initializing the Info Button
-
-        patientInfo.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientDashActivity.this, PatientInfoActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
         // Initializing the ChipNavigationBar

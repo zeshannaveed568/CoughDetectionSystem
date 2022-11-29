@@ -31,10 +31,6 @@ public class DoctorPatientSignUp extends AppCompatActivity {
         });
 
 
-
-
-
-
         SignUpPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

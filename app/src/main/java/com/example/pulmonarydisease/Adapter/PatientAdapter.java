@@ -3,6 +3,7 @@ package com.example.pulmonarydisease.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,11 @@ import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class PatientAdapter extends FirebaseRecyclerAdapter<PatientInfoFirebase, PatientAdapter.PatientViewHolder> {
 
@@ -59,4 +65,7 @@ public class PatientAdapter extends FirebaseRecyclerAdapter<PatientInfoFirebase,
 
         }
     }
+
+
+
 }

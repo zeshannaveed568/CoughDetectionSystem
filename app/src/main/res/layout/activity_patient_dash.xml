@@ -27,36 +27,7 @@
         app:cnb_unselectedColor="@color/black"
         tools:ignore="RtlSymmetry" />
 
-    <Button
-        android:id="@+id/btnSignOut"
-        android:backgroundTint="@color/white"
-        android:paddingStart="5dp"
-        android:layout_width="35dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/transparent_bg_bordered_button"
-        android:drawableStart="@drawable/ic_baseline_power_settings_new_24"
-        android:textColor="@color/white"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintVertical_bias="0"
-        tools:ignore="RtlSymmetry" />
 
-
-    <Button
-        android:id="@+id/btnInfoPatient"
-        android:layout_width="35dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/transparent_bg_bordered_button"
-        android:drawableStart="@drawable/ic_baseline_info_24"
-        android:paddingStart="5dp"
-        android:textColor="@color/white"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintVertical_bias="0"
-        tools:ignore="RtlSymmetry" />
 
 
 

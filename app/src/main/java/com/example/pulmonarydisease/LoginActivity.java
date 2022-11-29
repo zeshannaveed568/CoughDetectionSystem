@@ -113,13 +113,16 @@ public class LoginActivity extends AppCompatActivity {
                                         int userType = snapshot.getValue(Integer.class);
 
                                         if (userType == 1){
+
                                             Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
                                             startActivity(intent);
+                                            finish();
 
                                         }
                                         if (userType == 0){
                                             Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);
                                             startActivity(intent);
+                                            finish();
 
                                         }
 
@@ -131,7 +134,6 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
 
-                                finish();
                             }
                             else {
                                 user.sendEmailVerification();

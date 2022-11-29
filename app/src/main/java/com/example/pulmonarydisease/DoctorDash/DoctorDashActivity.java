@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.pulmonarydisease.Fragments.AppointmentFragment;
+import com.example.pulmonarydisease.Fragments.ChatFragment;
 import com.example.pulmonarydisease.DoctorInfoActivity;
+import com.example.pulmonarydisease.Fragments.ProfileFragment;
 import com.example.pulmonarydisease.LoginActivity;
 import com.example.pulmonarydisease.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,7 +20,6 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 public class DoctorDashActivity extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBarDoc;
-    Button btnLogout, doctorInfo;
 
 
 
@@ -28,28 +30,11 @@ public class DoctorDashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_dash);
 
-        btnLogout = findViewById(R.id.btnDocDashSignOut);
-        doctorInfo = findViewById(R.id.btnInfoDoctor);
 
 
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(DoctorDashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
-        doctorInfo.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DoctorDashActivity.this, DoctorInfoActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
 
         chipNavigationBarDoc  = findViewById(R.id.bottom_navigation_doc);
@@ -76,7 +61,7 @@ public class DoctorDashActivity extends AppCompatActivity {
                         fragment = new PatientFragment();
                         break;
                     case R.id.bottom_nav_profile:
-                        fragment = new DoctorProfileFragment();
+                        fragment = new ProfileFragment();
                         break;
                     case R.id.bottom_nav_appointments:
                         fragment = new AppointmentFragment();

@@ -1,5 +1,6 @@
 package com.example.pulmonarydisease.DoctorDash;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.pulmonarydisease.DoctorInfoActivity;
+import com.example.pulmonarydisease.LoginActivity;
 import com.example.pulmonarydisease.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +21,10 @@ import com.example.pulmonarydisease.R;
  * create an instance of this fragment.
  */
 public class DoctorDashFragment extends Fragment {
+
+
+    Button btnLogout, doctorInfo;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +70,32 @@ public class DoctorDashFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_doctor_dash, container, false);
+        View view =  inflater.inflate(R.layout.fragment_doctor_dash, container, false);
+
+        btnLogout = (Button) view.findViewById(R.id.btnDocDashSignOut);
+        doctorInfo = view.findViewById(R.id.btnInfoDoctor);
+
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        doctorInfo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DoctorInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        return view;
+
     }
 }
