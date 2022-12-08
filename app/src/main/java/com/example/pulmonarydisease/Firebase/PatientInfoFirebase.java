@@ -12,7 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PatientInfoFirebase {
 
-    public String name, email, cnic, phone;
+    public String name, email, cnic, phone,type;
 
     public PatientInfoFirebase() {
     }
@@ -49,15 +49,19 @@ public class PatientInfoFirebase {
         this.phone = phone;
     }
 
-    public PatientInfoFirebase(String name, String email, String cnic, String phone) {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public PatientInfoFirebase(String name, String email, String cnic, String phone, String type) {
         this.name = name;
         this.email = email;
         this.cnic = cnic;
         this.phone = phone;
+        this.type = type;
     }
-
-
-
-
-
 }

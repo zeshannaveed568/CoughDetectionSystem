@@ -43,7 +43,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listDoctorRecycler"
-                android:layout_width="370dp"
+                android:layout_width="420dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"

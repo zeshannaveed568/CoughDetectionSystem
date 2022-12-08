@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,8 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.pulmonarydisease.DoctorDash.DoctorDashActivity;
+import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
+import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.PatientDash.PatientDashActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -25,6 +29,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
+import com.google.firebase.ktx.Firebase;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText edtPassword;
 
     Button btn_Login;
+
 
     private FirebaseAuth mAuth;
 
@@ -53,6 +63,9 @@ public class LoginActivity extends AppCompatActivity {
 
         // Initialize Login Button
         btn_Login = findViewById(R.id.login_btn);
+
+
+        final LoadingDialogActivity loadingDialogActivity = new LoadingDialogActivity(LoginActivity.this);
 
 
 
@@ -80,6 +93,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
         btn_Login.setOnClickListener(v -> {
+
+
+            loadingDialogActivity.startLoadingDialog();
+
+
+
             final String email = edtEmail.getText().toString().trim();
             final String password = edtPassword.getText().toString().trim();
 
@@ -90,55 +109,75 @@ public class LoginActivity extends AppCompatActivity {
             if (TextUtils.isEmpty(password)){
                 edtPassword.setError("Password is required");
 
+
             }
 
+
             else{
+
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-
-                            if (user.isEmailVerified()){
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            checkUserType(user);
+                            loadingDialogActivity.dismissDialog();
 
 
-                                String uId = task.getResult().getUser().getUid();
-
-                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                firebaseDatabase.getReference().child("users").child(uId).child("type").addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        int userType = snapshot.getValue(Integer.class);
-
-                                        if (userType == 1){
-
-                                            Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
-                                            startActivity(intent);
-                                            finish();
-
-                                        }
-                                        if (userType == 0){
-                                            Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);
-                                            startActivity(intent);
-                                            finish();
-
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-
-                            }
-                            else {
-                                user.sendEmailVerification();
-                                Toast.makeText(LoginActivity.this, "Check your Email to Verify your Email", Toast.LENGTH_SHORT).show();
-                            }
+//                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//
+//
+//                            if (user.isEmailVerified()){
+//
+//
+//                                String uId = task.getResult().getUser().getUid();
+//
+//                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//
+//
+//
+//
+//                                firebaseDatabase.getReference().child("users").child(uId).child("type").addListenerForSingleValueEvent(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                        int userType = snapshot.getValue(Integer.class);
+//
+//                                        if (userType == 1){
+//
+//                                            Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
+//                                            startActivity(intent);
+//
+//                                            finish();
+////                                            loadingDialogActivity.dismissDialog();
+//
+//
+//
+//
+//                                        }
+//                                        if (userType == 0){
+//                                            Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);
+//                                            startActivity(intent);
+//                                            finish();
+////                                            loadingDialogActivity.dismissDialog();
+//
+//
+//
+//                                        }
+//
+//
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                                    }
+//                                });
+//
+//                            }
+//                            else {
+//                                user.sendEmailVerification();
+//                                Toast.makeText(LoginActivity.this, "Check your Email to Verify your Email", Toast.LENGTH_SHORT).show();
+//                            }
 
 
 
@@ -153,5 +192,66 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+
+    private void checkUserType(FirebaseUser user) {
+
+        if (user!=null){
+            try {
+                String uId = user.getUid();
+
+                if (user.isEmailVerified()) {
+
+
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+
+
+                firebaseDatabase.getReference().child("users").child(uId).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        DoctorInfoFirebase doctorInfoFirebase = snapshot.getValue(DoctorInfoFirebase.class);
+                        PatientInfoFirebase patientInfoFirebase = snapshot.getValue(PatientInfoFirebase.class);
+
+                        if (patientInfoFirebase.getType().equals("patient")){
+                            Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
+                            startActivity(intent);
+
+
+
+                            finish();
+                        }
+                        if (doctorInfoFirebase.getType().equals("doctor")){
+                            Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                }
+                else {
+                    user.sendEmailVerification();
+                    Toast.makeText(LoginActivity.this, "Check your Email to Verify your Email", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+            catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+
+
+
+
+    }
+
 
 }

@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.pulmonarydisease.LoadingDialogActivity;
 import com.example.pulmonarydisease.LoginActivity;
 import com.example.pulmonarydisease.PatientInfoActivity;
 import com.example.pulmonarydisease.R;
@@ -29,6 +30,8 @@ public class PatientDashFragment extends Fragment {
         btnLogout = view.findViewById(R.id.btnPatientSignOut);
 
 
+
+
         // Initializing the Info Button
         patientInfo =view.findViewById(R.id.btnInfoPatient);
 
@@ -38,9 +41,12 @@ public class PatientDashFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 FirebaseAuth.getInstance().signOut();
                 Intent intent= new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+
+
             }
         });
 

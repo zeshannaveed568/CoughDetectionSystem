@@ -3,12 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".com.example.doctorapp.BottomNav.AppointmentFragment">
+    tools:context=".Fragments.AppointmentFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_login"
+        tools:ignore="MissingConstraints" />
+    
+    <ImageButton
+        android:id="@+id/createAppointment"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="right"
+        android:background="@drawable/ic_baseline_exposure_plus_24"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/appointments" />
+        android:layout_marginLeft="30dp"
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/senbold"
+        android:text="APPOINTMENTS"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+    
+    
+    
+    
+    
 
 </FrameLayout>

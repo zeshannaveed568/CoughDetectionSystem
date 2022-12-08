@@ -100,12 +100,12 @@
 
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/loginUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/senregular"
-        android:text="Adnan Naveed"
+        android:text=""
         android:textColor="#525DAA"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/textView14"
@@ -119,11 +119,11 @@
         app:cardCornerRadius="12dp"
         app:cardElevation="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="@+id/loginUserName"
 
         app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/loginUserName"
+        app:layout_constraintTop_toBottomOf="@+id/loginUserName"
         app:layout_constraintVertical_bias="0.379">
 
         <LinearLayout

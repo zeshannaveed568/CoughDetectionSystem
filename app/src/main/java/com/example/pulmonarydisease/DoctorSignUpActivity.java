@@ -125,7 +125,8 @@ public class DoctorSignUpActivity extends AppCompatActivity {
                                 userInfo.put("password", password);
                                 userInfo.put("phone", phone);
                                 userInfo.put("cnic", cnic);
-                                userInfo.put("type", 0);
+                                userInfo.put("ProfileImage", "");
+                                userInfo.put("type", "doctor");
 
 
                                 userDatabaseRef.updateChildren(userInfo).addOnCompleteListener(new OnCompleteListener() {

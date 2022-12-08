@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="12dp"
     app:cardCornerRadius="12dp"
-    android:layout_margin="10dp">
+    android:layout_margin="5dp">
     <LinearLayout
         android:layout_marginVertical="10dp"
 
@@ -15,10 +15,12 @@
         android:layout_marginLeft="16dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center_vertical"
             android:id="@+id/doctorPatientImg"
+            android:src="@drawable/user"
             android:layout_marginRight="20dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
         
         <LinearLayout
             android:layout_width="wrap_content"
@@ -48,7 +50,7 @@
                 android:text="Name: "/>
 
             <TextView
-                android:id="@+id/doctorPatientType"
+                android:id="@+id/doctorPatientPhone"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp"
                 android:fontFamily="@font/senregular"
@@ -56,18 +58,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name: "/>
+            <TextView
+                android:id="@+id/doctorPatientType"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
 
 
         </LinearLayout>
 
 
-        <ImageView
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_gravity="right"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="68dp"
+            android:layout_height="31dp"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:text="Report"
+            android:textSize="12dp" />
+
+
+        <ImageButton
             android:id="@+id/imgViewChat"
-            android:layout_marginVertical="20dp"
             android:background="@color/transparent"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="100dp"
             android:src="@drawable/ic_baseline_message_24" />
 
 

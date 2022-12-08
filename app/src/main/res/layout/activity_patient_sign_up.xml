@@ -71,6 +71,7 @@
         android:layout_marginTop="52dp"
         android:background="@drawable/transparent_bg_bordered"
         android:hint="Full Name"
+        android:inputType="text"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="@+id/textSignIn"
         app:layout_constraintHorizontal_bias="0.0"
@@ -83,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:hint="Phone Number"
+        android:inputType="phone"
         android:background="@drawable/transparent_bg_bordered"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="@+id/editName"
@@ -91,6 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editName" />
 
     <EditText
+        android:inputType="number"
         android:id="@+id/editCnic"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
@@ -104,6 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editPhone" />
 
     <EditText
+        android:inputType="textEmailAddress"
         android:id="@+id/editEmail"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
@@ -122,7 +126,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-
+        android:inputType="textPassword"
         android:hint="Password"
         android:background="@drawable/transparent_bg_bordered"
         android:padding="12dp"
