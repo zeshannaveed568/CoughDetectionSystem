@@ -1,10 +1,11 @@
 package com.example.pulmonarydisease;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
+
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +20,6 @@ import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
 import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.PatientDash.PatientDashActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
@@ -29,13 +29,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
-import com.google.firebase.ktx.Firebase;
+
 
 public class LoginActivity extends AppCompatActivity {
+
 
     LottieAnimationView animationView;
     TextView btnSignUp, btnForgotPassword;
@@ -53,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         // Initialize edtEmail and edtPassword
         edtEmail = findViewById(R.id.editEmail);
         edtPassword = findViewById(R.id.editPassword);
@@ -68,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         final LoadingDialogActivity loadingDialogActivity = new LoadingDialogActivity(LoginActivity.this);
 
 
-
         // Initialize SignUp Button
         btnSignUp = findViewById(R.id.txtSignUp);
 
@@ -82,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         btnSignUp.setOnClickListener(v -> {
-            Intent intent =new Intent(LoginActivity.this, LoginSignUpActivity.class);
+            Intent intent = new Intent(LoginActivity.this, LoginSignUpActivity.class);
             startActivity(intent);
         });
 
@@ -98,27 +95,23 @@ public class LoginActivity extends AppCompatActivity {
             loadingDialogActivity.startLoadingDialog();
 
 
-
             final String email = edtEmail.getText().toString().trim();
             final String password = edtPassword.getText().toString().trim();
 
-            if (TextUtils.isEmpty(email)){
+            if (TextUtils.isEmpty(email)) {
                 edtEmail.setError("Email is required");
 
             }
-            if (TextUtils.isEmpty(password)){
+            if (TextUtils.isEmpty(password)) {
                 edtPassword.setError("Password is required");
 
 
-            }
-
-
-            else{
+            } else {
 
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             checkUserType(user);
                             loadingDialogActivity.dismissDialog();
@@ -180,9 +173,7 @@ public class LoginActivity extends AppCompatActivity {
 //                            }
 
 
-
-                        }
-                        else{
+                        } else {
                             Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -196,51 +187,48 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserType(FirebaseUser user) {
 
-        if (user!=null){
+        if (user != null) {
             try {
                 String uId = user.getUid();
 
                 if (user.isEmailVerified()) {
 
 
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
 
-                firebaseDatabase.getReference().child("users").child(uId).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        DoctorInfoFirebase doctorInfoFirebase = snapshot.getValue(DoctorInfoFirebase.class);
-                        PatientInfoFirebase patientInfoFirebase = snapshot.getValue(PatientInfoFirebase.class);
+                    firebaseDatabase.getReference().child("users").child(uId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            DoctorInfoFirebase doctorInfoFirebase = snapshot.getValue(DoctorInfoFirebase.class);
+                            PatientInfoFirebase patientInfoFirebase = snapshot.getValue(PatientInfoFirebase.class);
 
-                        if (patientInfoFirebase.getType().equals("patient")){
-                            Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
-                            startActivity(intent);
+                            if (patientInfoFirebase.getType().equals("patient")) {
+                                Intent intent = new Intent(LoginActivity.this, PatientDashActivity.class);
+                                startActivity(intent);
 
 
-
-                            finish();
+                                finish();
+                            }
+                            if (doctorInfoFirebase.getType().equals("doctor")) {
+                                Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
                         }
-                        if (doctorInfoFirebase.getType().equals("doctor")){
-                            Intent intent = new Intent(LoginActivity.this, DoctorDashActivity.class);
-                            startActivity(intent);
-                            finish();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                }
-                else {
+                    });
+                } else {
                     user.sendEmailVerification();
                     Toast.makeText(LoginActivity.this, "Check your Email to Verify your Email", Toast.LENGTH_SHORT).show();
                 }
 
 
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
@@ -248,10 +236,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-
-
-
     }
-
-
 }
+

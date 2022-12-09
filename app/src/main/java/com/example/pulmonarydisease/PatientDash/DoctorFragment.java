@@ -100,22 +100,6 @@ public class DoctorFragment extends Fragment {
     }
 
 
-//    private void updateRecyclerView() {
-//        final String patientID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//        Query query = firebaseDatabase.getReference("users").child(patientID).child("doctor");
-//
-//        FirebaseRecyclerOptions<DoctorInfoFirebase> options =
-//                new FirebaseRecyclerOptions.Builder<DoctorInfoFirebase>()
-//                        .setQuery(query, DoctorInfoFirebase.class)
-//                        .build();
-//
-//
-//        doctorAdapter = new DoctorAdapter(options);
-//        doctorRecyclerView.setAdapter(doctorAdapter);
-//
-//
-//
-//    }
 
     @Override
     public void onStart(){

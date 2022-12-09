@@ -13,15 +13,18 @@
         android:theme="@style/Theme.PulmonaryDisease"
         tools:targetApi="31">
         <activity
-            android:name=".ReportActivity"
+            android:name=".CreateAppointmentActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-
-
-
-
+        </activity>
+        <activity
+            android:name=".EditActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
         <activity
             android:name=".QuestionaireActivity"
@@ -88,6 +91,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
     </application>
 

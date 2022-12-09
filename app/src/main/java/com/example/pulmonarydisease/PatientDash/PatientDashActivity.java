@@ -1,9 +1,6 @@
 package com.example.pulmonarydisease.PatientDash;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,10 +8,7 @@ import androidx.fragment.app.Fragment;
 import com.example.pulmonarydisease.Fragments.AppointmentFragment;
 import com.example.pulmonarydisease.Fragments.ChatFragment;
 import com.example.pulmonarydisease.Fragments.ProfileFragment;
-import com.example.pulmonarydisease.LoginActivity;
-import com.example.pulmonarydisease.PatientInfoActivity;
 import com.example.pulmonarydisease.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class PatientDashActivity extends AppCompatActivity {
@@ -63,9 +57,7 @@ public class PatientDashActivity extends AppCompatActivity {
                     case R.id.bottom_nav_appointments:
                         fragment = new AppointmentFragment();
                         break;
-                    case R.id.bottom_nav_chat:
-                        fragment = new ChatFragment();
-                        break;
+
 
                 }
 

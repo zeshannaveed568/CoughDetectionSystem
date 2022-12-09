@@ -31,7 +31,7 @@
             <TextView
                 android:id="@+id/doctorPatientName"
                 android:layout_marginLeft="10dp"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:fontFamily="@font/senbold"
                 android:textColor="#525DAA"
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 android:text="Name: "/>
 
             <TextView
-                android:id="@+id/doctorPatientPhone"
+                android:id="@+id/doctorPatientType"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp"
                 android:fontFamily="@font/senregular"
@@ -58,10 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name: "/>
-            <TextView
-                android:id="@+id/doctorPatientType"
-                android:layout_width="0dp"
-                android:layout_height="0dp"/>
+
 
 
         </LinearLayout>
@@ -74,29 +71,28 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:layout_gravity="right"
         android:orientation="vertical"
         android:gravity="center"
+        android:layout_marginVertical="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <Button
-            android:layout_marginTop="10dp"
+            android:id="@+id/btnReport"
             android:layout_width="68dp"
             android:layout_height="31dp"
             android:background="@drawable/transparent_bg_bordered_button"
             android:text="Report"
             android:textSize="12dp" />
 
-
-        <ImageButton
-            android:id="@+id/imgViewChat"
+        <ImageView
+            android:id="@+id/whatsappUser"
             android:background="@color/transparent"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_baseline_message_24" />
-
+            android:src="@drawable/whatsapp_logo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"/>
 
 
     </LinearLayout>

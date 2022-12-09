@@ -17,6 +17,7 @@ import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -71,10 +72,39 @@ public class PatientFragment extends Fragment {
         patientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+        //fetch patient from collection user type = patient from firebase
+
+
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot: snapshot.getChildren());
+//                String type = snapshot.child("type").getValue().toString();
+//
+//                if (type.equals("patient")){
+//                    FirebaseRecyclerOptions<PatientInfoFirebase> options =
+//                            new FirebaseRecyclerOptions.Builder<PatientInfoFirebase>()
+//                                    .setQuery(FirebaseDatabase.getInstance().getReference(), PatientInfoFirebase.class)
+//                                    .build();
+//
+//                    patientAdapter = new PatientAdapter(options);
+//                    patientRecyclerView.setAdapter(patientAdapter);
+//                }
+//
+//
+//            }
+
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
         FirebaseRecyclerOptions<PatientInfoFirebase> Options =
                 new FirebaseRecyclerOptions.Builder<PatientInfoFirebase>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users"),
-                                PatientInfoFirebase.class).build();
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users"), PatientInfoFirebase.class)
+                        .build();
 
 
 

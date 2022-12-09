@@ -99,8 +99,8 @@
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/transparent_bg_bordered_button"
-                android:hint="@string/phone_number"
-                android:inputType="phone"
+                android:hint="923xxxxxxxxx"
+                android:inputType="number"
                 android:layout_marginTop="12dp"
                 android:padding="18dp"
                 android:autofillHints="phone"/>

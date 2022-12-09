@@ -1,5 +1,6 @@
 package com.example.pulmonarydisease.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.example.pulmonarydisease.EditActivity;
 import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,8 +34,10 @@ public class ProfileFragment extends Fragment {
     DatabaseReference databaseReference;
     FirebaseUser userPatient;
 
+    ImageButton btnEdit;
 
-    EditText txtPatientFullName, txtPatientEmail,txtPatientPhone, txtPatientCnic;
+
+    TextView txtPatientFullName, txtPatientEmail,txtPatientPhone, txtPatientCnic;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -87,6 +92,18 @@ public class ProfileFragment extends Fragment {
         txtPatientEmail = view.findViewById(R.id.txtPatientEmail);
         txtPatientPhone = view.findViewById(R.id.txtPatientPhone);
         txtPatientCnic = view.findViewById(R.id.txtPatientCnic);
+
+        btnEdit = view.findViewById(R.id.btnEdit);
+
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EditActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         userPatient = FirebaseAuth.getInstance().getCurrentUser();

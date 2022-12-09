@@ -8,12 +8,12 @@ public class LoadingDialogActivity {
     private Activity activity;
     private AlertDialog dialog;
 
-    LoadingDialogActivity(Activity myActivity){
+    public LoadingDialogActivity(Activity myActivity){
         activity = myActivity;
     }
 
 
-    void startLoadingDialog(){
+    public void startLoadingDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         builder.setView(R.layout.custom_dialog);
@@ -23,7 +23,7 @@ public class LoadingDialogActivity {
         dialog.show();
     }
 
-    void dismissDialog(){
+    public void dismissDialog(){
         dialog.dismiss();
     }
 

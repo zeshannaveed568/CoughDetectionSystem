@@ -99,7 +99,7 @@ public class DoctorSignUpActivity extends AppCompatActivity {
                     edtPhone.setError("Phone is required");
                     edtPhone.requestFocus();
                 }
-                if (phone.length() != 11){
+                if (phone.length() != 12){
                     edtPhone.setError("Enter Valid Phone Number");
                     edtPhone.requestFocus();
                 }

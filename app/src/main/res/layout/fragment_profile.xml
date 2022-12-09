@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.ProfileFragment">
 
     <ImageView
@@ -15,7 +14,9 @@
         tools:ignore="MissingConstraints" />
 
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/btnEdit"
+        android:background="@color/transparent"
         android:layout_marginRight="40dp"
         android:layout_marginTop="20dp"
         android:layout_gravity="right"
@@ -45,10 +46,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <EditText
+        <TextView
             android:textColor="#525DAA"
             android:fontFamily="@font/senregular"
             android:id="@+id/txtPatientFullName"
+            android:textSize="20dp"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="20dp"
             android:backgroundTint="#525DAA"
             android:layout_width="370dp"
             android:layout_height="wrap_content"/>
@@ -61,10 +66,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <EditText
+        <TextView
             android:textColor="#525DAA"
             android:fontFamily="@font/senregular"
-
+            android:textSize="20dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:paddingVertical="15dp"
             android:id="@+id/txtPatientEmail"
             android:backgroundTint="#525DAA"
             android:layout_width="370dp"
@@ -78,9 +86,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <EditText
+        <TextView
             android:textColor="#525DAA"
             android:fontFamily="@font/senregular"
+            android:textSize="20dp"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/transparent_bg_bordered_button"
             android:id="@+id/txtPatientPhone"
             android:backgroundTint="#525DAA"
             android:layout_width="370dp"
@@ -95,8 +107,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <EditText
+        <TextView
+            android:textSize="20dp"
             android:textColor="#525DAA"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/transparent_bg_bordered_button"
             android:fontFamily="@font/senregular"
             android:id="@+id/txtPatientCnic"
             android:backgroundTint="#525DAA"

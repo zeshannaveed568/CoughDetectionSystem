@@ -22,9 +22,6 @@
         android:icon="@drawable/ic_baseline_person_24"
         app:cnb_backgroundColor="#525DAA"/>
 
-    <item android:id="@+id/bottom_nav_chat"
-        android:title="@string/chat"
-        android:icon="@drawable/ic_baseline_chat_24"
-        app:cnb_backgroundColor="#525DAA"/>
+
 
 </menu>

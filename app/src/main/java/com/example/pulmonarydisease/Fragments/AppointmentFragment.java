@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pulmonarydisease.Adapter.DoctorAdapter;
+import com.example.pulmonarydisease.CreateAppointmentActivity;
 import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
 import com.example.pulmonarydisease.PatientDash.DoctorFragment;
 import com.example.pulmonarydisease.R;
@@ -22,9 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AppointmentFragment extends Fragment {
 
 
-
-
-
+    ImageButton btnCreateAppointment;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -65,7 +64,23 @@ public class AppointmentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_appointment, container,false);
+        View view = inflater.inflate(R.layout.fragment_appointment, container,false);
+
+
+        btnCreateAppointment = view.findViewById(R.id.createAppointment);
+
+
+        btnCreateAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CreateAppointmentActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        return view;
 
 
 
