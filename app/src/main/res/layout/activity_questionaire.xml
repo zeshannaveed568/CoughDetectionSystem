@@ -69,9 +69,14 @@
                     android:layout_height="wrap_content"/>
 
                 <Spinner
+                    android:padding="12dp"
+                    android:layout_width="320dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/transparent_bg_bordered_button"
+                    android:id="@+id/spinnerDisease"
                     android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                   />
 
                 <TextView
                     android:layout_marginTop="15dp"
@@ -84,6 +89,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:id="@+id/edtWeight"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -105,6 +111,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:id="@+id/edtPhysicalActivities"
                     android:layout_gravity="center"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
@@ -126,6 +133,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:id="@+id/edtAnySurgery"
                     android:layout_gravity="center"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
@@ -146,6 +154,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:id="@+id/edtAnyAllergies"
                     android:layout_gravity="center"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
@@ -167,6 +176,7 @@
 
 
                 <EditText
+                    android:id="@+id/edtGeneticDisease"
                     android:layout_gravity="center"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
@@ -189,9 +199,14 @@
 
 
                 <Spinner
+                    android:padding="12dp"
+
+                    android:id="@+id/spinnerSmoke"
                     android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="320dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/transparent_bg_bordered_button"/>
 
 
                 <TextView
@@ -205,9 +220,13 @@
                     android:layout_height="wrap_content"/>
 
                 <Spinner
+                    android:padding="12dp"
+                    android:id="@+id/spinnerIndustrialArea"
                     android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="320dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/transparent_bg_bordered_button"/>
 
                 <TextView
                     android:layout_marginTop="15dp"
@@ -220,6 +239,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:id="@+id/edtSleepingHours"
                     android:layout_gravity="center"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
@@ -241,9 +261,13 @@
 
 
                 <Spinner
+                    android:padding="12dp"
+                    android:id="@+id/spinnerCovid"
                     android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_width="320dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/transparent_bg_bordered_button"/>
 
 
             </LinearLayout>

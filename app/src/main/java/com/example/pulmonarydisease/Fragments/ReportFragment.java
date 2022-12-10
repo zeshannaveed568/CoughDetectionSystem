@@ -106,40 +106,38 @@ public class ReportFragment extends Fragment {
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Submit Complaint for particular user and save it in database
+
+                //Submit Report for Doctor
 
                 etReport = view.findViewById(R.id.etReport);
 
                 String report = etReport.getText().toString();
 
                 firebaseDatabase = FirebaseDatabase.getInstance();
+                databaseReference = firebaseDatabase.getReference("Reports");
 
-                databaseReference = firebaseDatabase.getReference("Reports").child(firebaseAuth.getCurrentUser().getUid());
+                String key = databaseReference.push().getKey();
 
-                databaseReference.child("Report").setValue(report);
+                databaseReference.child(key).child("Name").setValue(name);
 
-                databaseReference.child("Name").setValue(name);
+                databaseReference.child(key).child("Email").setValue(email);
 
-                databaseReference.child("Email").setValue(email);
+                databaseReference.child(key).child("Type").setValue(type);
 
-                databaseReference.child("Type").setValue(type);
+                databaseReference.child(key).child("Phone").setValue(phone);
 
-                databaseReference.child("Phone").setValue(phone);
+                databaseReference.child(key).child("Report").setValue(report);
+
+                Toast.makeText(getActivity(), "Report Submitted", Toast.LENGTH_SHORT).show();
 
                 etReport.setText("");
 
 
-                Toast.makeText(v.getContext(), "Reported Sucessfully", Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
 
             }
-        });
 
+
+        });
 
 
 

@@ -78,17 +78,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                                <RadioButton
+                                    android:id="@+id/trueFever"
+                                    android:text="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <RadioButton
+                                    android:id="@+id/falseFever"
+                                    android:text="false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
 
-                        <RadioButton
-                            android:id="@+id/trueFever"
-                            android:text="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <RadioButton
-                            android:id="@+id/falseFever"
-                            android:text="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 

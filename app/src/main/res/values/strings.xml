@@ -47,4 +47,32 @@
     <string name="login_failed">"Login failed"</string>
 
 
+    <string-array name="disease">
+        <item>Select A Disease</item>
+        <item>Asthma</item>
+        <item>Flu</item>
+        <item>COPD</item>
+        <item>Lung Cancer</item>
+        <item>Covid</item>
+    </string-array>
+
+    <string-array name="smoke">
+        <item>Select</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="industrial">
+        <item>Select</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="covid">
+        <item>Select</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+
 </resources>
