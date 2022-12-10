@@ -1,15 +1,23 @@
 package com.example.pulmonarydisease.Adapter;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
+import com.example.pulmonarydisease.Fragments.ReportFragment;
 import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -37,7 +45,41 @@ public class PatientAdapter extends FirebaseRecyclerAdapter<PatientInfoFirebase,
 
         holder.patientName.setText(model.getName());
         holder.patientEmail.setText(model.getEmail());
-        holder.patientPhone.setText(model.getPhone());
+        holder.patientType.setText(model.getType());
+
+        holder.whatsappPatient.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                PackageManager pm = v.getContext().getPackageManager();
+                try {
+
+                    String url = "https://api.whatsapp.com/send?phone=" + model.getPhone() + "&text=" + "Hello " + model.getName();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    v.getContext().startActivity(i);
+
+                } catch (Exception e) {
+                    Toast.makeText(v.getContext(), "Error/n" + e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+
+        });
+
+
+
+        holder.btnPatientReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_patient, new ReportFragment(model.getName(),model.getEmail(),model.type, model.getPhone())).addToBackStack(null).commit();
+
+
+            }
+        });
+
 
 
     }
@@ -53,7 +95,11 @@ public class PatientAdapter extends FirebaseRecyclerAdapter<PatientInfoFirebase,
 
     public class PatientViewHolder extends RecyclerView.ViewHolder {
 
-        TextView patientName, patientEmail, patientPhone;
+        TextView patientName, patientEmail, patientType;
+
+        Button btnPatientReport;
+
+        ImageView whatsappPatient;
 
         public PatientViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,7 +107,11 @@ public class PatientAdapter extends FirebaseRecyclerAdapter<PatientInfoFirebase,
 
             patientName = itemView.findViewById(R.id.doctorPatientName);
             patientEmail = itemView.findViewById(R.id.doctorPatientEmail);
-            patientPhone= itemView.findViewById(R.id.doctorPatientType);
+            patientType= itemView.findViewById(R.id.doctorPatientType);
+
+            whatsappPatient =itemView.findViewById(R.id.whatsappUser);
+
+            btnPatientReport = itemView.findViewById(R.id.btnReport);
 
         }
     }

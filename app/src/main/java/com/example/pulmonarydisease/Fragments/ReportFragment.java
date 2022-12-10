@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.pulmonarydisease.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -105,16 +106,33 @@ public class ReportFragment extends Fragment {
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Submit = etReport.getText().toString().trim();
-                if (Submit.isEmpty()) {
-                    etReport.setError("Please Enter Your Issue");
-                    etReport.requestFocus();
+                //Submit Complaint for particular user and save it in database
 
-                }
-                else {
+                etReport = view.findViewById(R.id.etReport);
+
+                String report = etReport.getText().toString();
+
+                firebaseDatabase = FirebaseDatabase.getInstance();
+
+                databaseReference = firebaseDatabase.getReference("Reports").child(firebaseAuth.getCurrentUser().getUid());
+
+                databaseReference.child("Report").setValue(report);
+
+                databaseReference.child("Name").setValue(name);
+
+                databaseReference.child("Email").setValue(email);
+
+                databaseReference.child("Type").setValue(type);
+
+                databaseReference.child("Phone").setValue(phone);
+
+                etReport.setText("");
 
 
-                }
+                Toast.makeText(v.getContext(), "Reported Sucessfully", Toast.LENGTH_SHORT).show();
+
+
+
 
 
 

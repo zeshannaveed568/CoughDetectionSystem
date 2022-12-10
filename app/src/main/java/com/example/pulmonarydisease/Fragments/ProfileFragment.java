@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -32,12 +33,12 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileFragment extends Fragment {
 
     DatabaseReference databaseReference;
-    FirebaseUser userPatient;
+    FirebaseUser user;
 
     ImageButton btnEdit;
 
 
-    TextView txtPatientFullName, txtPatientEmail,txtPatientPhone, txtPatientCnic;
+    TextView txtUserFullName, txtUserEmail,txtUserPhone, txtUserCnic;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -88,10 +89,10 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container,false);
 
 
-        txtPatientFullName = view.findViewById(R.id.txtPatientFullName);
-        txtPatientEmail = view.findViewById(R.id.txtPatientEmail);
-        txtPatientPhone = view.findViewById(R.id.txtPatientPhone);
-        txtPatientCnic = view.findViewById(R.id.txtPatientCnic);
+        txtUserFullName = view.findViewById(R.id.txtPatientFullName);
+        txtUserEmail = view.findViewById(R.id.txtPatientEmail);
+        txtUserPhone = view.findViewById(R.id.txtPatientPhone);
+        txtUserCnic = view.findViewById(R.id.txtPatientCnic);
 
         btnEdit = view.findViewById(R.id.btnEdit);
 
@@ -99,16 +100,25 @@ public class ProfileFragment extends Fragment {
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Pass data to EditActivity
+
                 Intent intent = new Intent(getActivity(), EditActivity.class);
+                intent.putExtra("fullName", txtUserFullName.getText().toString());
+                intent.putExtra("email", txtUserEmail.getText().toString());
+                intent.putExtra("phone", txtUserPhone.getText().toString());
+                intent.putExtra("cnic", txtUserCnic.getText().toString());
                 startActivity(intent);
+
+
+
             }
         });
 
 
 
-        userPatient = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userPatient.getUid());
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -116,10 +126,10 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 PatientInfoFirebase patientInfoFirebase = snapshot.getValue(PatientInfoFirebase.class);
 
-                txtPatientFullName.setText(patientInfoFirebase.getName());
-                txtPatientEmail.setText(patientInfoFirebase.getEmail());
-                txtPatientPhone.setText(patientInfoFirebase.getPhone());
-                txtPatientCnic.setText(patientInfoFirebase.getCnic());
+                txtUserFullName.setText(patientInfoFirebase.getName());
+                txtUserEmail.setText(patientInfoFirebase.getEmail());
+                txtUserPhone.setText(patientInfoFirebase.getPhone());
+                txtUserCnic.setText(patientInfoFirebase.getCnic());
 
 
             }

@@ -4,6 +4,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/edit_layout"
     tools:context=".EditActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_login"
+        tools:ignore="MissingConstraints" />
+
+
+    <LinearLayout
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginVertical="40dp"
+            android:layout_gravity="center"
+            android:textSize="36sp"
+            android:fontFamily="@font/senbold"
+            android:textColor="@color/white"
+            android:text="EDIT PROFILE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImg"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/user"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:text="Fullname: "
+            android:fontFamily="@font/senbold"
+            android:textColor="#525DAA"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:textColor="#525DAA"
+            android:fontFamily="@font/senregular"
+            android:id="@+id/txtUserFullName"
+            android:textSize="20dp"
+            android:maxHeight="50dp"
+            android:minHeight="45dp"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="20dp"
+            android:backgroundTint="#525DAA"
+            android:inputType="textPersonName"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Email: "
+            android:fontFamily="@font/senbold"
+            android:textColor="#525DAA"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:textColor="#525DAA"
+            android:fontFamily="@font/senregular"
+            android:textSize="20dp"
+            android:paddingHorizontal="20dp"
+            android:maxHeight="50dp"
+            android:minHeight="45dp"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:paddingVertical="15dp"
+            android:id="@+id/txtUserEmail"
+            android:inputType="textEmailAddress"
+            android:backgroundTint="#525DAA"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Phone: "
+            android:fontFamily="@font/senbold"
+            android:textColor="#525DAA"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:textColor="#525DAA"
+            android:fontFamily="@font/senregular"
+            android:textSize="20dp"
+            android:maxHeight="50dp"
+            android:minHeight="45dp"
+            android:inputType="number"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:id="@+id/txtUserPhone"
+            android:backgroundTint="#525DAA"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:text="CNIC: "
+            android:fontFamily="@font/senbold"
+            android:textColor="#525DAA"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:textSize="20dp"
+            android:textColor="#525DAA"
+            android:maxHeight="50dp"
+            android:minHeight="45dp"
+            android:inputType="number"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="20dp"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:fontFamily="@font/senregular"
+            android:id="@+id/txtUserCnic"
+            android:backgroundTint="#525DAA"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"/>
+
+
+        <Button
+            android:id="@+id/updateData"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:layout_marginTop="180dp"
+            android:layout_gravity="center"
+            android:paddingHorizontal="80dp"
+            android:text="Update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

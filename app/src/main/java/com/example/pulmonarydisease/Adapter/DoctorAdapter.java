@@ -49,7 +49,7 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
                 PackageManager pm = v.getContext().getPackageManager();
                 try {
 
-                    String url = "https://api.whatsapp.com/send?phone=" + model.getPhone() + "&text=" + "Hello Doctor";
+                    String url = "https://api.whatsapp.com/send?phone=" + model.getPhone() + "&text=" + "Hello Dr. " + model.getName();
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setData(Uri.parse(url));
                     v.getContext().startActivity(i);
@@ -68,7 +68,8 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_doctor, new ReportFragment(model.getName(),model.getEmail(),model.type, model.getPhone())).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_doctor, new ReportFragment(model.getName(),
+                        model.getEmail(),model.type, model.getPhone())).addToBackStack(null).commit();
 
 
             }
