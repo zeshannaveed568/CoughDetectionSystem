@@ -52,7 +52,7 @@
             android:layout_marginTop="40dp"
             android:layout_width="350dp"
             android:layout_gravity="center"
-            android:layout_height="match_parent">
+            android:layout_height="560dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -246,25 +246,23 @@
                     android:layout_height="match_parent"/>
 
 
-                <Button
-                    android:layout_marginTop="100dp"
-                    android:layout_marginBottom="30dp"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="80dp"
-                    android:id="@+id/btnSubmitQuestionnaire"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/transparent_bg_bordered_button"
-                    android:text="@string/submit"
-                    android:layout_marginStart="0dp"
-                    />
-
-
-
-
             </LinearLayout>
 
         </ScrollView>
+
+        <Button
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:paddingHorizontal="80dp"
+            android:id="@+id/btnSubmitQuestionnaire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transparent_bg_bordered_button"
+            android:text="@string/submit"
+            android:layout_marginStart="0dp"
+            />
+
 
     </LinearLayout>
 

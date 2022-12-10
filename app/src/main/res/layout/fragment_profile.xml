@@ -31,20 +31,45 @@
         android:layout_width="150dp"
         android:layout_height="150dp"/>
 
+
+
+
+
+    <Button
+        android:id="@+id/btnQuestionnaire"
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="25dp"
+        android:text="FilL Questionnaire"
+        android:paddingHorizontal="20dp"
+        android:background="@drawable/transparent_bg_bordered_button"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
     <LinearLayout
+
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="300dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+
         <TextView
+            android:layout_marginBottom="5dp"
             android:text="Fullname: "
             android:fontFamily="@font/senbold"
             android:textColor="#525DAA"
             android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+
+
+
+
 
         <TextView
             android:textColor="#525DAA"

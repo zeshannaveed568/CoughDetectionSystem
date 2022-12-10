@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.pulmonarydisease.EditActivity;
 import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
+import com.example.pulmonarydisease.QuestionaireActivity;
 import com.example.pulmonarydisease.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +38,9 @@ public class ProfileFragment extends Fragment {
     FirebaseUser user;
 
     ImageButton btnEdit;
+
+
+    Button btnQuestionnaire;
 
 
     TextView txtUserFullName, txtUserEmail,txtUserPhone, txtUserCnic;
@@ -94,8 +99,22 @@ public class ProfileFragment extends Fragment {
         txtUserPhone = view.findViewById(R.id.txtPatientPhone);
         txtUserCnic = view.findViewById(R.id.txtPatientCnic);
 
-        btnEdit = view.findViewById(R.id.btnEdit);
+        btnQuestionnaire = view.findViewById(R.id.btnQuestionnaire);
 
+
+        btnQuestionnaire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), QuestionaireActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+        btnEdit = view.findViewById(R.id.btnEdit);
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
