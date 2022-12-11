@@ -17,7 +17,9 @@ import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +30,8 @@ public class AppointmentDoctorFragment extends Fragment {
 
     RecyclerView appointmentRecyclerView;
     AppointmentDoctorAdapter appointmentDoctorAdapter;
+
+    DatabaseReference databaseReference;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -77,13 +81,18 @@ public class AppointmentDoctorFragment extends Fragment {
         View view =
                 inflater.inflate(R.layout.fragment_appointment_doctor, container, false);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+
         appointmentRecyclerView = view.findViewById(R.id.appointmentListDoctor);
         appointmentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+
         FirebaseRecyclerOptions<Appointment> Options =
                 new FirebaseRecyclerOptions.Builder<Appointment>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("Appointments"), Appointment.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Appointments"), Appointment.class)
                         .build();
 
         appointmentDoctorAdapter = new AppointmentDoctorAdapter(Options);

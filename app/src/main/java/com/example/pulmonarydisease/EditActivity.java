@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,6 +24,8 @@ public class EditActivity extends AppCompatActivity {
 
 
     DatabaseReference databaseReference;
+    FirebaseUser firebaseUser;
+
 
     Button btnUpdate;
 
@@ -32,7 +36,7 @@ public class EditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("user");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
 
 
         btnUpdate = findViewById(R.id.updateData);
@@ -53,7 +57,8 @@ public class EditActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //update data in firebase
-                    updateData(v);
+
+                    updateDate();
 
                 }
         });
@@ -80,88 +85,39 @@ public class EditActivity extends AppCompatActivity {
 
     }
 
-    private void updateData( View v) {
-        //Update data to firebase
+   private void updateDate(){
 
-        if (isNameChanged() || isEmailChanged() || isPhoneChanged() || isCnicChanged() ){
-            //Data is changed
-            Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
+        //user wants to update particular data in firebase
 
-        }
-        else {
-            //Data is not changed
-            Toast.makeText(this, "Data is same and cannot be updated", Toast.LENGTH_SHORT).show();
-        }
+        //get data from edit text
+        String fullNameUpdate = fullName.getText().toString();
+        String emailUpdate = email.getText().toString();
+        String phoneUpdate = phone.getText().toString();
+        String cnicUpdate = cnic.getText().toString();
 
-    }
+        //set data to firebase
 
+       firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+         String userId = firebaseUser.getUid();
 
-
-    private boolean isNameChanged() {
-        if (!fullNameIntent.equals(fullName.getText().toString())){
-
-
-            //Name is changed
-            databaseReference.child("users").child("name").setValue(fullName.getText().toString());
-
-            //Update name in firebase
-
-            fullNameIntent = fullName.getText().toString();
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    }
-
-    private boolean isEmailChanged() {
-        if (!emailIntent.equals(email.getText().toString())){
-            //Email is changed
-            databaseReference.child(emailIntent).child("email").setValue(email.getText().toString());
-            //Update email in firebase
-            emailIntent = email.getText().toString();
-            return true;
-        }
-        else {
-            return false;
-        }
-
-
-    }
-
-    private boolean isPhoneChanged() {
-        if (!phoneIntent.equals(phone.getText().toString())){
-            //Phone is changed
-            databaseReference.child(phoneIntent).child("phone").setValue(phone.getText().toString());
-
-            //Update phone in firebase
-            phoneIntent = phone.getText().toString();
-
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    private boolean isCnicChanged() {
-        if (!cnicIntent.equals(cnic.getText().toString())){
-            //change existing cnic in firebase of current user
-            databaseReference.child(cnicIntent).child("cnic").setValue(cnic.getText().toString());
-
-            //Update cnic in firebase
-            cnicIntent = cnic.getText().toString();
-            return true;
+        databaseReference.child(userId).child("name").setValue(fullNameUpdate);
+        databaseReference.child(userId).child("email").setValue(emailUpdate);
+        databaseReference.child(userId).child("phone").setValue(phoneUpdate);
+        databaseReference.child(userId).child("cnic").setValue(cnicUpdate);
 
 
 
+
+
+
+//            databaseReference.child("fullName").setValue(fullName.getText().toString());
+//            databaseReference.child("email").setValue(email.getText().toString());
+//            databaseReference.child("phone").setValue(phone.getText().toString());
+//            databaseReference.child("cnic").setValue(cnic.getText().toString());
+
+            Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
 
         }
-        else {
-            return false;
-        }
+   }
 
-    }
 
-}

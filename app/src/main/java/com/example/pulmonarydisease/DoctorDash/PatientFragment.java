@@ -2,6 +2,7 @@ package com.example.pulmonarydisease.DoctorDash;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +15,10 @@ import com.example.pulmonarydisease.Adapter.PatientAdapter;
 import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.SnapshotParser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 public class PatientFragment extends Fragment {
@@ -96,9 +100,20 @@ public class PatientFragment extends Fragment {
 //            }
 //        });
 
+        Query query =
+        FirebaseDatabase.getInstance().getReference().child("users").orderByChild("type").equalTo("patient");
+
         FirebaseRecyclerOptions<PatientInfoFirebase> Options =
                 new FirebaseRecyclerOptions.Builder<PatientInfoFirebase>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users"), PatientInfoFirebase.class)
+                        .setQuery(query, new SnapshotParser<PatientInfoFirebase>() {
+                            @NonNull
+                            @Override
+                            public PatientInfoFirebase parseSnapshot(@NonNull DataSnapshot snapshot) {
+                                PatientInfoFirebase patientInfoFirebase = snapshot.getValue(PatientInfoFirebase.class);
+                                return patientInfoFirebase;
+
+                            }
+                        })
                         .build();
 
 

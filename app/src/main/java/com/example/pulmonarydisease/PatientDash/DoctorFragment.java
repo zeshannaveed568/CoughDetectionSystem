@@ -2,6 +2,7 @@ package com.example.pulmonarydisease.PatientDash;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +15,10 @@ import com.example.pulmonarydisease.Adapter.DoctorAdapter;
 import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
 import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.SnapshotParser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 public class DoctorFragment extends Fragment {
@@ -77,18 +81,31 @@ public class DoctorFragment extends Fragment {
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+        Query query =
+                firebaseDatabase.getReference().child("users").orderByChild("type").equalTo("doctor");
 
-
-
-
-
-        FirebaseRecyclerOptions<DoctorInfoFirebase> Options =
+        FirebaseRecyclerOptions<DoctorInfoFirebase> options =
                 new FirebaseRecyclerOptions.Builder<DoctorInfoFirebase>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users"),
-                                DoctorInfoFirebase.class).build();
+                        .setQuery(query, new SnapshotParser<DoctorInfoFirebase>() {
+                            @NonNull
+                            @Override
+                            public DoctorInfoFirebase parseSnapshot(@NonNull DataSnapshot snapshot) {
+                                DoctorInfoFirebase doctorInfoFirebase = snapshot.getValue(DoctorInfoFirebase.class);
+                                return doctorInfoFirebase;
+                            }
+                            }).build();
 
 
-        doctorAdapter = new DoctorAdapter(Options);
+
+
+//
+//        FirebaseRecyclerOptions<DoctorInfoFirebase> Options =
+//                new FirebaseRecyclerOptions.Builder<DoctorInfoFirebase>()
+//                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users"),
+//                                DoctorInfoFirebase.class).build();
+
+
+        doctorAdapter = new DoctorAdapter(options);
         doctorRecyclerView.setAdapter(doctorAdapter);
 
         return view;
