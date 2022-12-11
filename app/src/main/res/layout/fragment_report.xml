@@ -60,7 +60,7 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/reportImg"
-                android:layout_marginLeft="45dp"
+                android:layout_marginStart="45dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/user"
                 android:layout_width="50dp"
@@ -70,8 +70,8 @@
                 <TextView
                     android:textColor="#525DAA"
                     android:layout_gravity="center"
-                    android:textSize="18dp"
-                    android:layout_marginLeft="18dp"
+                    android:textSize="18sp"
+                    android:layout_marginStart="18dp"
                     android:id="@+id/reportEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -84,8 +84,10 @@
                 android:id="@+id/etReport"
                 android:hint="Enter your Complaint"
                 android:layout_width="320dp"
+                android:autofillHints="text"
                 android:layout_height="45dp"
                 android:minHeight="45dp"
+                android:inputType="textMultiLine"
                 android:maxHeight="100dp"
                 android:layout_gravity="center"
                 android:background="@drawable/textboxborder"

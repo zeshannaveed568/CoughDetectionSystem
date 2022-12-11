@@ -1,14 +1,7 @@
 package com.example.pulmonarydisease.Firebase;
 
-import android.widget.EditText;
 
-import androidx.annotation.NonNull;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PatientInfoFirebase {
 
@@ -16,6 +9,7 @@ public class PatientInfoFirebase {
 
     public PatientInfoFirebase() {
     }
+
 
     public String getName() {
         return name;
@@ -56,6 +50,8 @@ public class PatientInfoFirebase {
     public void setType(String type) {
         this.type = type;
     }
+
+
 
     public PatientInfoFirebase(String name, String email, String cnic, String phone, String type) {
         this.name = name;

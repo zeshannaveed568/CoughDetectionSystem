@@ -1,4 +1,4 @@
-package com.example.pulmonarydisease.Adapter;
+package com.example.pulmonarydisease.Firebase;
 
 import android.widget.EditText;
 import android.widget.Spinner;

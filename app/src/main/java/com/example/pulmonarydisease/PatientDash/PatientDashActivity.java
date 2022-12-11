@@ -5,9 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.pulmonarydisease.Fragments.AppointmentFragment;
-import com.example.pulmonarydisease.Fragments.ChatFragment;
-import com.example.pulmonarydisease.Fragments.ProfileFragment;
+import com.example.pulmonarydisease.Fragments.ProfilePatientFragment;
 import com.example.pulmonarydisease.R;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
@@ -52,10 +50,10 @@ public class PatientDashActivity extends AppCompatActivity {
                         fragment = new DoctorFragment();
                         break;
                     case R.id.bottom_nav_profile:
-                        fragment = new ProfileFragment();
+                        fragment = new ProfilePatientFragment();
                         break;
                     case R.id.bottom_nav_appointments:
-                        fragment = new AppointmentFragment();
+                        fragment = new AppointmentPatientFragment();
                         break;
 
 

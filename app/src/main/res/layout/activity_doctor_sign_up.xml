@@ -8,12 +8,15 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
         android:contentDescription="@string/bgImage"
         android:scaleType="centerCrop"
         android:src="@drawable/login_bg_screen_small"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -68,75 +71,80 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_height="630dp"
+        android:layout_height="550dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-
         <LinearLayout
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="593dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/user" />
 
 
             <EditText
                 android:id="@+id/editFullName"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
+                android:autofillHints="name"
                 android:background="@drawable/transparent_bg_bordered"
                 android:hint="@string/full_name"
                 android:inputType="text"
-                android:autofillHints="name"
                 android:padding="12dp" />
 
             <EditText
                 android:id="@+id/editPhone"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:autofillHints="phone"
                 android:background="@drawable/transparent_bg_bordered_button"
                 android:hint="923xxxxxxxxx"
                 android:inputType="number"
-                android:layout_marginTop="12dp"
-                android:padding="18dp"
-                android:autofillHints="phone"/>
+                android:padding="18dp" />
 
             <EditText
                 android:id="@+id/cNic"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/transparent_bg_bordered_button"
-                android:padding="18dp"
-                android:inputType="number"
-                android:hint="@string/CNIC"
                 android:layout_marginTop="6dp"
                 android:autofillHints="CNIC"
-                />
+                android:background="@drawable/transparent_bg_bordered_button"
+                android:hint="@string/CNIC"
+                android:inputType="number"
+                android:padding="18dp" />
 
             <EditText
                 android:id="@+id/editEmail"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:layout_marginTop="6dp"
                 android:autofillHints="emailAddress"
                 android:background="@drawable/transparent_bg_bordered_button"
-                android:padding="18dp"
-                android:layout_marginTop="6dp"
-                />
+                android:hint="Email"
+                android:padding="18dp" />
 
             <EditText
                 android:id="@+id/editPassword"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:autofillHints="password"
                 android:background="@drawable/transparent_bg_bordered"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:autofillHints="password"
                 android:padding="12dp" />
 
             <Spinner
@@ -144,24 +152,29 @@
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:padding="14dp"
                 android:background="@drawable/transparent_bg_bordered"
-                />
+                android:minHeight="45dp"
+                android:padding="14dp" />
 
-            <Button
-                android:id="@+id/btSignUp"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/transparent_bg_bordered_button"
-                android:text="@string/sign_up"
-                android:textColor="@color/black"
-                />
 
         </LinearLayout>
 
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/btSignUp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:background="@drawable/transparent_bg_bordered_button"
+        android:text="@string/sign_up"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:layout_constraintVertical_bias="0.719" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

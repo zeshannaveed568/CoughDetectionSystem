@@ -3,48 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_doctor"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".PatientDash.DoctorFragment">
+    tools:context=".DoctorDash.AppointmentDoctorFragment">
 
-
+    <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_login"
-
         tools:ignore="MissingConstraints" />
 
-
     <TextView
-        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/senbold"
-        android:text="DOCTORS"
+        android:text="APPOINTMENTS"
         android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold" />
 
 
-    <LinearLayout
-        android:layout_marginTop="140dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appointmentListDoctor"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="150dp"
         android:layout_width="match_parent"
-        android:layout_height="700dp"
-        android:orientation="vertical">
-            <androidx.recyclerview.widget.RecyclerView
-
-                android:id="@+id/listDoctorRecycler"
-                android:layout_width="370dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"/>
-
-
-
-    </LinearLayout>
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

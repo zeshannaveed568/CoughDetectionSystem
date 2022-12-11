@@ -64,19 +64,30 @@
         app:layout_constraintTop_toTopOf="@+id/textView10"
         app:layout_constraintVertical_bias="1.0" />
 
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="150dp"
+        android:src="@drawable/user"
+        android:layout_height="150dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/textSignIn"
+        app:layout_constraintHorizontal_bias="0.671"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
     <EditText
         android:id="@+id/editName"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/transparent_bg_bordered"
         android:hint="Full Name"
-        android:inputType="text"
+        android:inputType="textPersonName"
         android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/textSignIn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintEnd_toEndOf="@+id/circleImageView"
+        app:layout_constraintStart_toStartOf="@+id/circleImageView"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
 
     <EditText
         android:id="@+id/editPhone"
@@ -139,15 +150,15 @@
         android:id="@+id/signup_btn"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="240dp"
         android:background="@drawable/transparent_bg_bordered_button"
         android:text="SIGN UP"
         android:textColor="@color/black"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editPassword"
         app:layout_constraintStart_toStartOf="@+id/editPassword"
         app:layout_constraintTop_toBottomOf="@+id/editPassword"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.67" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="12dp"
+    app:cardCornerRadius="12dp"
+    android:layout_margin="5dp">
+
+    <ImageView
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/deleteAppointmentDoctor"
+        android:layout_gravity="right"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:layout_marginVertical="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/doctorPatientImg"
+            android:src="@drawable/user"
+            android:layout_marginRight="20dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/patientName"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/senbold"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Patient Name"/>
+
+                <TextView
+                    android:id="@+id/patientAppointmentName"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/senregular"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name: "/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/doctorPatientPhone"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/senbold"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Patient Phone"/>
+
+                <TextView
+                    android:id="@+id/patientAppointmentPhone"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/senregular"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone "/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/doctorPatientDate"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/senbold"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appointment Date:  "/>
+
+                <TextView
+                    android:id="@+id/patientAppointmentDate"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/senregular"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date "/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/doctorPatientTime"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/senbold"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time: "/>
+
+                <TextView
+                    android:id="@+id/patientAppointmentTime"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/senregular"
+                    android:textColor="#525DAA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time: "/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

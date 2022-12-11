@@ -46,7 +46,8 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
 
             @Override
             public void onClick(View v) {
-                PackageManager pm = v.getContext().getPackageManager();
+                PackageManager pm;
+                pm = v.getContext().getPackageManager();
                 try {
 
                     String url = "https://api.whatsapp.com/send?phone=" + model.getPhone() + "&text=" + "Hello Dr. " + model.getName();
@@ -55,7 +56,7 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
                     v.getContext().startActivity(i);
 
                 } catch (Exception e) {
-                    Toast.makeText(v.getContext(), "Error/n" + e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), "Error/n" + e, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -64,15 +65,12 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
         });
 
 
-        holder.btnReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_doctor, new ReportFragment(model.getName(),
-                        model.getEmail(),model.type, model.getPhone())).addToBackStack(null).commit();
+        holder.btnReport.setOnClickListener(v -> {
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_doctor, new ReportFragment(model.getName(),
+                    model.getEmail(),model.type, model.getPhone())).addToBackStack(null).commit();
 
 
-            }
         });
 
     }
@@ -93,8 +91,8 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
 
     }
 
-    public class DoctorViewHolder extends RecyclerView.ViewHolder {
-        TextView doctorName, doctorEmail, doctorType, doctorPhone;
+    public static class DoctorViewHolder extends RecyclerView.ViewHolder {
+        TextView doctorName, doctorEmail, doctorType;
 
         Button btnReport;
 

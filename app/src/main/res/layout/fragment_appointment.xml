@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.AppointmentFragment">
+    tools:context=".PatientDash.AppointmentPatientFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -35,6 +35,43 @@
         android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appointmentPatientList"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <!--    Show booked appointments with doctors-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/appointmentList"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_marginTop="150dp"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        android:layout_marginBottom="30dp"-->
+
+<!--        android:padding="10dp"-->
+<!--        android:scrollbars="vertical"-->
+<!--        android:scrollbarStyle="outsideOverlay"-->
+<!--        android:scrollbarSize="10dp"-->
+
+<!--        android:scrollbarDefaultDelayBeforeFade="1000"-->
+<!--        android:scrollbarFadeDuration="1000"-->
+<!--        android:scrollbarAlwaysDrawVerticalTrack="true"-->
+<!--        android:scrollbarAlwaysDrawHorizontalTrack="true"-->
+<!--        android:scrollbarMinimumRange="10dp"-->
+
+<!--        android:scroll/>-->
+
+
+
+
+
     
     
     

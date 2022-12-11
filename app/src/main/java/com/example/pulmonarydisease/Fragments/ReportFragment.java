@@ -148,7 +148,7 @@ public class ReportFragment extends Fragment {
 
     public void onBackPress(){
         AppCompatActivity activity = (AppCompatActivity)getContext();
-        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_doctor, new ProfileFragment()).addToBackStack(null).commit();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_doctor, new ProfilePatientFragment()).addToBackStack(null).commit();
 
     }
 

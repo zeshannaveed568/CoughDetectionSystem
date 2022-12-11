@@ -1,7 +1,6 @@
 package com.example.pulmonarydisease;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.example.pulmonarydisease.Adapter.Questionnaire;
+import com.example.pulmonarydisease.Firebase.Questionnaire;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -95,7 +95,7 @@ public class QuestionaireActivity extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference("Questionnaire").child(uid).setValue(questionnaire);
 
                 //Show Success Message
-                //Toast.makeText(QuestionaireActivity.this, "Questionnaire Submitted Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(QuestionaireActivity.this, "Questionnaire Submitted Successfully", Toast.LENGTH_SHORT).show();
 
 
 

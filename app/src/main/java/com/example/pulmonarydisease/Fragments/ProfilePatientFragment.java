@@ -1,10 +1,10 @@
 package com.example.pulmonarydisease.Fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -25,23 +25,28 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
+ * Use the {@link ProfilePatientFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class ProfilePatientFragment extends Fragment {
 
     DatabaseReference databaseReference;
     FirebaseUser user;
+
+    FirebaseStorage storage;
 
     ImageButton btnEdit;
 
 
     Button btnQuestionnaire;
-
 
     TextView txtUserFullName, txtUserEmail,txtUserPhone, txtUserCnic;
 
@@ -55,7 +60,7 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ProfileFragment() {
+    public ProfilePatientFragment() {
         // Required empty public constructor
     }
 
@@ -68,8 +73,8 @@ public class ProfileFragment extends Fragment {
      * @return A new instance of fragment PatientProfileFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
+    public static ProfilePatientFragment newInstance(String param1, String param2) {
+        ProfilePatientFragment fragment = new ProfilePatientFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -98,6 +103,7 @@ public class ProfileFragment extends Fragment {
         txtUserEmail = view.findViewById(R.id.txtPatientEmail);
         txtUserPhone = view.findViewById(R.id.txtPatientPhone);
         txtUserCnic = view.findViewById(R.id.txtPatientCnic);
+
 
         btnQuestionnaire = view.findViewById(R.id.btnQuestionnaire);
 
@@ -149,6 +155,10 @@ public class ProfileFragment extends Fragment {
                 txtUserEmail.setText(patientInfoFirebase.getEmail());
                 txtUserPhone.setText(patientInfoFirebase.getPhone());
                 txtUserCnic.setText(patientInfoFirebase.getCnic());
+
+
+
+
 
 
             }

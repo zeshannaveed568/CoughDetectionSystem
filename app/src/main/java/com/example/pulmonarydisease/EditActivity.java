@@ -11,7 +11,11 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class EditActivity extends AppCompatActivity {
+
+    CircleImageView img;
 
     EditText fullName, email, phone, cnic;
     String fullNameIntent, emailIntent, phoneIntent, cnicIntent;
@@ -37,6 +41,8 @@ public class EditActivity extends AppCompatActivity {
         email= findViewById(R.id.txtUserEmail);
         phone= findViewById(R.id.txtUserPhone);
         cnic= findViewById(R.id.txtUserCnic);
+
+        img = findViewById(R.id.profileImg);
 
 
         getData();
@@ -77,7 +83,7 @@ public class EditActivity extends AppCompatActivity {
     private void updateData( View v) {
         //Update data to firebase
 
-        if (isNameChanged() || isEmailChanged() || isPhoneChanged() || isCnicChanged()){
+        if (isNameChanged() || isEmailChanged() || isPhoneChanged() || isCnicChanged() ){
             //Data is changed
             Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
 
@@ -88,6 +94,8 @@ public class EditActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     private boolean isNameChanged() {
         if (!fullNameIntent.equals(fullName.getText().toString())){
@@ -139,14 +147,16 @@ public class EditActivity extends AppCompatActivity {
 
     private boolean isCnicChanged() {
         if (!cnicIntent.equals(cnic.getText().toString())){
-            //Cnic is changed
+            //change existing cnic in firebase of current user
             databaseReference.child(cnicIntent).child("cnic").setValue(cnic.getText().toString());
 
             //Update cnic in firebase
             cnicIntent = cnic.getText().toString();
-
-
             return true;
+
+
+
+
         }
         else {
             return false;

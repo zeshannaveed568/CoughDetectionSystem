@@ -46,6 +46,42 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
+    <string name="doctor_download">
+        1. Download and install the cough diagnostic app on your device.
+    </string>
+
+    <string name="doctor_create">
+        2. Create an account with your email address and password.
+    </string>
+
+    <string name="doctor_details">
+        3. Enter your doctor’s information such as name,contact details.
+    </string>
+    <string name="doctor_qualification">
+        4. Choose a Qualification from the list of options.
+    </string>
+    <string name="doctor_answer">
+        5. Answer a series of questions about the patient’s symptoms to help the app determine the cause of the cough.
+    </string>
+    <string name="doctor_track">
+        6. Use the app to track the patient’s progress over time and to compare their symptoms with those of other patients with similar conditions.
+    </string>
+    <string name="doctor_alert">
+        7. Receive alerts when the patient’s condition worsens or improves.
+    </string>
+    <string name="doctor_professionals">
+        8. Use the app to share patient information with other medical professionals.
+    </string>
+    <string name="doctor_treatment">
+        9. Monitor patient health and make adjustments in their treatment plan as needed.
+    </string>
+    <string name="doctor_info">
+        10. Keep your patient informed of their progress and provide them with resources for additional information.
+    </string>
+
+
+
+
 
     <string-array name="disease">
         <item>Select A Disease</item>
@@ -72,6 +108,15 @@
         <item>Select</item>
         <item>Yes</item>
         <item>No</item>
+    </string-array>
+
+    <string-array name="doctorsQualification">
+        <item>Select</item>
+        <item>Allergists/Immunologists</item>
+        <item>Pulmonologists</item>
+        <item>Preventive Medicine Specialists</item>
+        <item>Dentist</item>
+
     </string-array>
 
 

@@ -1,4 +1,4 @@
-package com.example.pulmonarydisease.Fragments;
+package com.example.pulmonarydisease.PatientDash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,16 +11,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pulmonarydisease.Adapter.DoctorAdapter;
+import com.example.pulmonarydisease.Adapter.AppointmentPatientAdapter;
 import com.example.pulmonarydisease.CreateAppointmentActivity;
-import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
-import com.example.pulmonarydisease.PatientDash.DoctorFragment;
+import com.example.pulmonarydisease.Firebase.Appointment;
 import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class AppointmentFragment extends Fragment {
+public class AppointmentPatientFragment extends Fragment {
+
+    RecyclerView appointmentRecyclerView;
+    AppointmentPatientAdapter appointmentPatientAdapter;
 
 
     ImageButton btnCreateAppointment;
@@ -35,14 +37,14 @@ public class AppointmentFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AppointmentFragment() {
+    public AppointmentPatientFragment() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static AppointmentFragment newInstance(String param1, String param2) {
-        AppointmentFragment fragment = new AppointmentFragment();
+    public static AppointmentPatientFragment newInstance(String param1, String param2) {
+        AppointmentPatientFragment fragment = new AppointmentPatientFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,6 +68,24 @@ public class AppointmentFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_appointment, container,false);
 
+        //Recycler View
+        appointmentRecyclerView = view.findViewById(R.id.appointmentPatientList);
+        appointmentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        FirebaseRecyclerOptions<Appointment> options =
+                    new FirebaseRecyclerOptions.Builder<Appointment>()
+                            .setQuery(FirebaseDatabase.getInstance().getReference().child("Appointments"), Appointment.class)
+                            .build();
+
+
+
+        appointmentPatientAdapter = new AppointmentPatientAdapter(options);
+        appointmentRecyclerView.setAdapter(appointmentPatientAdapter);
+
+
+
+
+        //Create Appointment Button
 
         btnCreateAppointment = view.findViewById(R.id.createAppointment);
 
@@ -80,6 +100,7 @@ public class AppointmentFragment extends Fragment {
 
 
 
+
         return view;
 
 
@@ -87,8 +108,17 @@ public class AppointmentFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        appointmentPatientAdapter.startListening();
+    }
 
-
+    @Override
+    public void onStop(){
+        super.onStop();
+        appointmentPatientAdapter.stopListening();
+    }
 
 
 
