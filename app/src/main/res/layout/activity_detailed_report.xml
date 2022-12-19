@@ -1,0 +1,1309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_login"
+        />
+
+    <TextView
+        android:id="@+id/txtDetailedReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/senbold"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.336" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/senbold"
+        android:text="Symptoms"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="@+id/txtDetailedReport"
+        app:layout_constraintStart_toStartOf="@+id/txtDetailedReport"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetailedReport" />
+
+
+    <ImageView
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_line_24_white"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            tools:layout_editor_absoluteX="0dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="1.    Bluish Lips"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24_white"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24_white"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="2.    Breathlessness"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="3.    Change Weight"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="4.    Cough"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="5.    Cygnosis"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="6.    Depression"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="7.    Diarrhea"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="8.    Dizziness"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="9.    Fever"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="10.    Heart Problem"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="11.    Hyperventilation"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="12.    Lung Function"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="14.    Night Sweat"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="15.    Phlegm"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="16.    Rib Tightness"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="17.    Running Nose"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="18.    Sore Throat"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="19.    Swelling"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="20.    Vomiting"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="21.    Wheezing"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/senregular"
+                        android:text="22.    Whooping Cough"
+                        android:textColor="#525DAA"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/ic_baseline_check_24"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/ic_outline_clear_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/senbold"
+                android:text="Medical History"
+                android:textColor="#525DAA"
+                android:textSize="26sp" />
+
+            <ImageView
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_baseline_line_24"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+
+
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="1.    Allergies"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="2.    Genetic Disease"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="3.    Physical Actvities"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="4.    Sleep Pattern"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="5.    Surgeries"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="6.    Weight"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="7.    Covid"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="8.    Diseases"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/senregular"
+                            android:text="9.    Smoke"
+                            android:textColor="#525DAA"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <EditText
+                                android:minHeight="40dp"
+                                android:background="@drawable/transparent_bg_bordered_button"
+                                android:layout_marginLeft="90dp"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+            <TextView
+
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/senbold"
+                android:text="Recorded Audio"
+                android:textColor="#525DAA"
+                android:textSize="26sp" />
+
+
+            <ImageView
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_baseline_line_24"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+
+
+            <TextView
+
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/senbold"
+                android:text="Generated Results"
+                android:textColor="#525DAA"
+                android:textSize="26sp" />
+
+            <ImageView
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_baseline_line_24"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+
+            <TextView
+                android:id="@+id/txtModelResults"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/senregular"
+                android:text="Results"
+                android:textColor="#525DAA"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,7 @@ import com.example.pulmonarydisease.DoctorInfoActivity;
 import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.LoginActivity;
 import com.example.pulmonarydisease.R;
+import com.example.pulmonarydisease.ViewReportActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 public class DoctorDashFragment extends Fragment {
 
 
-    TextView loginUserName;
+    TextView loginUserName, viewReport;
 
     DatabaseReference databaseReference;
     FirebaseUser userDoctor;
@@ -91,6 +92,16 @@ public class DoctorDashFragment extends Fragment {
         doctorInfo = view.findViewById(R.id.btnInfoDoctor);
 
         loginUserName = (TextView) view.findViewById(R.id.loginUserName);
+
+        viewReport = (TextView) view.findViewById(R.id.txtViewReport);
+
+        viewReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ViewReportActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         userDoctor = FirebaseAuth.getInstance().getCurrentUser();

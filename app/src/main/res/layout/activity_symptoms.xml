@@ -77,6 +77,10 @@
                         android:gravity="right"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                                 <RadioButton
                                     android:id="@+id/trueFever"
@@ -88,6 +92,8 @@
                                     android:text="false"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
 
                     </LinearLayout>
@@ -115,16 +121,22 @@
                         android:layout_height="match_parent">
 
 
-                        <RadioButton
-                            android:id="@+id/trueCough"
-                            android:text="true"
+                        <RadioGroup
+                            android:orientation="horizontal"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                        <RadioButton
-                            android:id="@+id/falseCough"
-                            android:text="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/trueCough"
+                                android:text="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <RadioButton
+                                android:id="@+id/falseCough"
+                                android:text="false"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -150,6 +162,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/trueBreathless"
@@ -161,6 +177,7 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -187,6 +204,10 @@
                         android:layout_height="match_parent">
 
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
                         <RadioButton
                             android:id="@+id/trueSoreThroat"
                             android:text="true"
@@ -198,6 +219,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
+                        </RadioGroup>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -222,6 +244,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/trueRibTightness"
@@ -233,6 +259,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -258,6 +286,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueWheezing"
@@ -269,6 +302,7 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -294,6 +328,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/trueRunningNose"
@@ -305,6 +343,7 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -330,6 +369,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/trueDiahrrea"
@@ -341,6 +384,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -366,6 +411,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueVomiting"
@@ -377,6 +427,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -402,6 +454,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueLungFunction"
@@ -413,6 +470,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -439,6 +498,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueWhoopingCough"
@@ -450,6 +514,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -475,6 +541,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/truePhlegm"
@@ -486,6 +557,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -511,6 +584,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueNausea"
@@ -522,6 +600,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -547,6 +627,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueHeartProblem"
@@ -558,6 +643,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -583,6 +670,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueBluishLips"
@@ -594,6 +686,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -619,6 +713,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueCygnosis"
@@ -630,6 +729,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -655,6 +756,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/trueHyperventilation"
@@ -666,6 +771,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -691,6 +798,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueWeightChange"
@@ -702,6 +814,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -727,6 +841,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/trueDizziness"
@@ -738,6 +856,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -763,6 +883,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
 
                         <RadioButton
                             android:id="@+id/trueDepression"
@@ -774,6 +898,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -799,6 +925,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueSwelling"
@@ -810,6 +941,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -835,6 +968,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
 
                         <RadioButton
                             android:id="@+id/trueNightSweats"
@@ -846,6 +984,8 @@
                             android:text="false"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
+
+                        </RadioGroup>
 
                     </LinearLayout>
 

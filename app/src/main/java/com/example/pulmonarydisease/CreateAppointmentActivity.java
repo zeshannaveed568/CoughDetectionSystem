@@ -156,12 +156,17 @@ public class CreateAppointmentActivity extends AppCompatActivity {
             Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
         } else {
 
-            //Create new firebase user
+//            //Create new firebase user
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String Uid = user.getUid();
 
-            //Create new appointment
+//            //Create new appointment
             Appointment appointment = new Appointment(patientName, patientAge, patientPhone, patientEmail, date, time, doctorName);
+//
+//            //multiple appointments of user
+//            reference.child(Uid).child("A").push().setValue(appointment);
+//
+//            Toast.makeText(this, "Appointment created successfully", Toast.LENGTH_SHORT).show();
 
 
             //Save appointment to firebase
@@ -169,6 +174,8 @@ public class CreateAppointmentActivity extends AppCompatActivity {
 
             //Show success message
             Toast.makeText(CreateAppointmentActivity.this, "Appointment Set Sucessfully", Toast.LENGTH_SHORT).show();
+
+            //Go back to home page
 
             //Go back to home activity
             finish();

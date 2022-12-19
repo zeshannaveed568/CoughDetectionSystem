@@ -5,7 +5,6 @@
     <string name="doctors">Doctors</string>
     <string name="dashboard">Dashboard</string>
     <string name="profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="chat">Chat</string>
     <string name="sign_out">Sign Out</string>
@@ -78,9 +77,10 @@
     <string name="doctor_info">
         10. Keep your patient informed of their progress and provide them with resources for additional information.
     </string>
-
-
-
+    <string name="pulmonary_disease">Pulmonary Disease</string>
+    <string name="patient_dashboard">Patient Dashboard</string>
+    <string name="add_symptoms">ADD Symptoms</string>
+    <string name="press_and_hold_to_analyze_cough">Press and Hold to Analyze Cough</string>
 
 
     <string-array name="disease">

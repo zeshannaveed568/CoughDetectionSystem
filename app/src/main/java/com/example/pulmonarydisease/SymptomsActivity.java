@@ -3,12 +3,15 @@ package com.example.pulmonarydisease;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.pulmonarydisease.PatientDash.PatientDashActivity;
+import com.example.pulmonarydisease.PatientDash.PatientDashFragment;
 import com.example.pulmonarydisease.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -288,6 +291,12 @@ public class SymptomsActivity extends AppCompatActivity {
 
 
                 Toast.makeText(getApplicationContext(), "Data Saved Successfully", Toast.LENGTH_SHORT).show();
+
+
+                //Redirect to the previous Activity
+                Intent intent = new Intent(getApplicationContext(), PatientDashActivity.class);
+                startActivity(intent);
+
 
             }
         });

@@ -60,6 +60,9 @@ public class DoctorSignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_sign_up);
 
+
+        //hooks
+
         edtFullName = findViewById(R.id.editFullName);
         edtEmail = findViewById(R.id.editEmail);
         edtPassword = findViewById(R.id.editPassword);

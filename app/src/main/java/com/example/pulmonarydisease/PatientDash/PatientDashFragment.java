@@ -1,24 +1,78 @@
 package com.example.pulmonarydisease.PatientDash;
 
+
+import static com.airbnb.lottie.network.FileExtension.JSON;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.telecom.Call;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.pulmonarydisease.SymptomsActivity;
 import com.example.pulmonarydisease.LoginActivity;
 import com.example.pulmonarydisease.PatientInfoActivity;
 import com.example.pulmonarydisease.R;
+import com.example.pulmonarydisease.ml.Model;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.annotations.NotNull;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.tensorflow.lite.DataType;
+import org.tensorflow.lite.Interpreter;
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.security.auth.callback.Callback;
 
 
 public class PatientDashFragment extends Fragment {
 
     Button btnLogout, patientInfo, btnSymptoms;
+
+    Button floatRecord;
+    TextView recordingLabel, coughResult, coughReport;
+
+    private MediaRecorder recorder;
+    private String fileName = null;
+
+    StorageReference storageReference;
+
+
+    private static final String LOG_TAG = "AudioRecordTest";
+
+//    private static final LOG_TAG = "AudioRecordTest";
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -55,22 +109,39 @@ public class PatientDashFragment extends Fragment {
     }
 
 
-
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_patient_dash, container, false);
+        View view = inflater.inflate(R.layout.fragment_patient_dash, container, false);
 
         // Initializing the Sign Out Button
         btnLogout = view.findViewById(R.id.btnPatientSignOut);
 
 
         // Initializing the Info Button
-        patientInfo =view.findViewById(R.id.btnInfoPatient);
+        patientInfo = view.findViewById(R.id.btnInfoPatient);
 
         // Initializing the Symptoms Button
         btnSymptoms = view.findViewById(R.id.btnAddSymptoms);
+
+        //Storage Reference to store audio
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        //coughResult txtView Hook
+        coughResult = view.findViewById(R.id.txtResults);
+
+        //coughReport txtView Hook
+        coughReport = view.findViewById(R.id.txtCoughReport);
+
+
+        // Initializing the Record Button
+        recordingLabel = view.findViewById(R.id.recordingLabel);
+        floatRecord = view.findViewById(R.id.floatingRecordCough);
+        fileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+        fileName += "/coughSample1.3gp";
+
 
         // defining the sign out button
 
@@ -79,7 +150,7 @@ public class PatientDashFragment extends Fragment {
             public void onClick(View v) {
 
                 FirebaseAuth.getInstance().signOut();
-                Intent intent= new Intent(getActivity(), LoginActivity.class);
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
 
 
@@ -89,7 +160,7 @@ public class PatientDashFragment extends Fragment {
 
         // Initializing the Info Button
 
-        patientInfo.setOnClickListener(new View.OnClickListener(){
+        patientInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), PatientInfoActivity.class);
@@ -100,28 +171,248 @@ public class PatientDashFragment extends Fragment {
 
 //         Initializing the Symptoms Button
 
-        btnSymptoms.setOnClickListener(new View.OnClickListener(){
+        btnSymptoms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addSymptoms();
+                Intent intent = new Intent(getActivity(), SymptomsActivity.class);
+                startActivity(intent);
 
             }
         });
 
+//         Initializing the Record Button with press and hold functionality
+
+        floatRecord.setOnTouchListener(
+                new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+
+                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                            startRecording();
+                            recordingLabel.setText("Recording...");
+                        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                            stopRecording();
+                            recordingLabel.setText("Press and Hold to Analyze Cough");
+                            Toast.makeText(getActivity(), "Recorded Sucessfully... Uploading & saved to Storage", Toast.LENGTH_SHORT).show();
+                        }
+                        return false;
+                        //check if symptoms have been added
+//                        if (SymptomsActivity.symptomsAdded == false) {
+//                            Toast.makeText(getActivity(), "Please add symptoms first", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            switch (event.getAction()) {
+//                                case MotionEvent.ACTION_DOWN:
+//                                    startRecording();
+//                                    recordingLabel.setText("Recording...");
+//                                    break;
+//                                case MotionEvent.ACTION_UP:
+//                                    stopRecording();
+//                                    recordingLabel.setText("Record");
+//                                    break;
+//                            }
+//                        }
 
 
+//                        Intent intent = getActivity().getIntent();
+//                        boolean recordCough = intent.getBooleanExtra("recordCough", false);
+//                        if (recordCough) {
+//                            switch (event.getAction()) {
+//                                case MotionEvent.ACTION_DOWN:
+//                                    startRecording();
+//                                    recordingLabel.setText("Recording...");
+//                                    break;
+//                                case MotionEvent.ACTION_UP:
+//                                    stopRecording();
+//                                    recordingLabel.setText("Record");
+//                                    break;
+//                            }
+//                        }
+
+
+
+
+
+
+                    }
+                }
+        );
 
 
         return view;
 
     }
+//    private void startRecording() {
+//        //start on press and hold and stop on release
+//        //check if permission is granted
+//        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+//            //Passing an intent to record audio
+//            Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+//            startActivityForResult(intent, 1);
+//
+//        } else {
+//            requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1);
+//        }
+//    }
 
-    private void addSymptoms() {
+    private void startRecording() {
+        recorder = new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(fileName);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
 
-        Intent intent = new Intent(getActivity(), SymptomsActivity.class);
-        startActivity(intent);
+        try {
+            recorder.prepare();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+
+        recorder.start();
+    }
+
+    private void stopRecording() {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
+
+        uploadAudio();
 
     }
 
+    private void uploadAudio() {
+        //upload audio to firebase
+        StorageReference filepath = FirebaseStorage.getInstance().getReference().child("Audio");
+        Uri uri = Uri.fromFile(new File(fileName));
 
+        filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                //convert audio to json
+                convertAudio();
+
+            }
+
+
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Audio Upload Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void convertAudio() {
+        //convert audio to json
+        //get the audio file from firebase
+        StorageReference filepath = FirebaseStorage.getInstance().getReference().child("Audio").child("coughSample1.3gp");
+        filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                //convert audio to json
+                String url = uri.toString();
+                String json = "{\"config\": {\"encoding\":\"LINEAR16\",\"sampleRateHertz\": 16000,\"languageCode\": \"en-US\"},\"audio\": {\"uri\": \"" + url + "\"}}";
+                //send json to api
+                sendForAnalysis(json);
+            }
+
+
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Audio Download Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    private void sendForAnalysis(String json) {
+
+
+        //covid 19 api url
+        String url = "https://coughAnalysis-api.herokuapp.com/coughAnalysis";
+
+
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
+
+        Toast.makeText(getActivity(), "Sending for Analysis", Toast.LENGTH_SHORT).show();
+
+        // Request a string response from the provided URL.
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+                coughResult.setText("You are fit and Healthy");
+                coughReport.setText("Your Reports have been sent to Doctor");
+
+
+
+                JSONObject jsonObject = null;
+
+                //send json to api
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            //get the result from the api
+                            coughResult.setText("You are fit and Healthy");
+                            String result = response.getString("result");
+
+                            coughReport.setText("Your Reports have been sent to Doctor");
+
+
+                            //display the result
+                            coughResult.setText(result);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+                queue.add(jsonObjectRequest);
+            }
+        }, 5000);
+
+
+
+//        JSONObject jsonObject = null;
+//        try {
+//            jsonObject = new JSONObject(json);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//
+//
+//        }
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                //get the response from the api
+//                try {
+//                    Toast.makeText(getActivity(), "getting results", Toast.LENGTH_SHORT).show();
+//                    String result = response.getString("result");
+//                    //display the result
+//
+//                    Toast.makeText(getActivity(), "Sending for Analysis", Toast.LENGTH_SHORT).show();
+//
+//
+//                    Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
+    }
 }

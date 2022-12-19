@@ -84,26 +84,87 @@ public class QuestionaireActivity extends AppCompatActivity {
                 String EditAllergies = editAllergies.getText().toString();
                 String EditSleep = editSleep.getText().toString();
 
-                //Create a new user
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String uid = user.getUid();
 
-                //Create a new Questionnaire
-                Questionnaire questionnaire = new Questionnaire(SpinDiseases, SpinSmoke, SpinIndustrial, SpinCovid, EditWeight, EditPhysicalActivities, EditSurgery, EditGeneticDisease, EditAllergies, EditSleep);
+                if (SpinDiseases.isEmpty()){
+                    spinDiseases.setPrompt("Please select an option");
+                    spinDiseases.requestFocus();
+                }
+                if (SpinSmoke.isEmpty()){
+                    spinSmoke.setPrompt("Please select an option");
+                    spinSmoke.requestFocus();
+                }
+                if (SpinIndustrial.isEmpty()){
+                    spinIndustrial.setPrompt("Please select an option");
+                    spinIndustrial.requestFocus();
+                }
+                if (SpinCovid.isEmpty()){
+                    spinCovid.setPrompt("Please select an option");
+                    spinCovid.requestFocus();
+                }
+                if (EditWeight.isEmpty()){
+                    editWeight.setError("Please enter your weight");
+                    editWeight.requestFocus();
+                }
+                if (EditPhysicalActivities.isEmpty()){
+                    editPhysicalActivities.setError("Please enter your physical activities");
+                    editPhysicalActivities.requestFocus();
+                }
+                if (EditSurgery.isEmpty()){
+                    editSurgery.setError("Please enter your surgery");
+                    editSurgery.requestFocus();
+                }
+                if (EditGeneticDisease.isEmpty()){
+                    editGeneticDisease.setError("Please enter your genetic disease");
+                    editGeneticDisease.requestFocus();
+                }
+                if (EditAllergies.isEmpty()){
+                    editAllergies.setError("Please enter your allergies");
+                    editAllergies.requestFocus();
+                }
+                if (EditSleep.isEmpty()){
+                    editSleep.setError("Please enter your sleeping hours");
+                    editSleep.requestFocus();
+                }
 
-                //Save the Questionnaire to the database
-                FirebaseDatabase.getInstance().getReference("Questionnaire").child(uid).setValue(questionnaire);
-
-                //Show Success Message
-                Toast.makeText(QuestionaireActivity.this, "Questionnaire Submitted Successfully", Toast.LENGTH_SHORT).show();
-
+                //check hours of sleep
+                if (Integer.parseInt(EditSleep) > 24 && Integer.parseInt(EditSleep) < 0){
+                    Toast.makeText(QuestionaireActivity.this, "Sleep Value cannot be greater than 24", Toast.LENGTH_SHORT).show();
+                }
 
 
-                //Go back to the main activity
-                finish();
+//                if (Integer.parseInt(EditSleep) >= 24 && Integer.parseInt(EditSleep) <= 0){
+//                    editSleep.setError("Please enter a valid number");
+//                    editSleep.requestFocus();
+//                }
+//
+//                if (Integer.parseInt(EditWeight) >= 24 && Integer.parseInt(EditWeight) <= 0){
+//                    editSleep.setError("Please enter a valid number");
+//                    editSleep.requestFocus();
+//                }
+
+                else {
+                    Toast.makeText(QuestionaireActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
 
 
+                    //Create a new user
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = user.getUid();
 
+                    //Create a new Questionnaire
+                    Questionnaire questionnaire = new Questionnaire(SpinDiseases, SpinSmoke, SpinIndustrial, SpinCovid, EditWeight, EditPhysicalActivities, EditSurgery, EditGeneticDisease, EditAllergies, EditSleep);
+
+                    //Save the Questionnaire to the database
+                    FirebaseDatabase.getInstance().getReference("Questionnaire").child(uid).setValue(questionnaire);
+
+                    //Show Success Message
+                    Toast.makeText(QuestionaireActivity.this, "Questionnaire Submitted Successfully", Toast.LENGTH_SHORT).show();
+
+
+                    //Go back to the main activity
+                    finish();
+
+
+                }
             }
         });
 
