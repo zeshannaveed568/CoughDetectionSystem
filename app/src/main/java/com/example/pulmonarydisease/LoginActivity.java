@@ -174,7 +174,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         } else {
-                            Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                            loadingDialogActivity.dismissDialog();
+                            Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -230,6 +231,7 @@ public class LoginActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
 
 

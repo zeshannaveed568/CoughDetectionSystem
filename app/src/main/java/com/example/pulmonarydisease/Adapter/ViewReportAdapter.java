@@ -31,11 +31,17 @@ public class ViewReportAdapter extends FirebaseRecyclerAdapter<PatientInfoFireba
     protected void onBindViewHolder(@NonNull ReportViewHolder holder, int position, @NonNull PatientInfoFirebase model) {
         holder.viewReport.setText(model.getName());
 
+        //pass intent to detailed report
+
+
+
+
         holder.viewReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //open Detailed Report Activity
                 Intent intent = new Intent(v.getContext(), DetailedReport.class);
+                intent.putExtra("name", model.getName());
                 v.getContext().startActivity(intent);
 
 

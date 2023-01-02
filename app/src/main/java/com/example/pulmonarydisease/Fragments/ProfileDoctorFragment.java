@@ -1,6 +1,7 @@
 package com.example.pulmonarydisease.Fragments;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.pulmonarydisease.EditActivity;
 import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
 import com.example.pulmonarydisease.R;
@@ -23,6 +26,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +42,8 @@ public class ProfileDoctorFragment extends Fragment {
     FirebaseUser user;
 
     ImageButton btnEdit;
+
+    CircleImageView profileImg;
 
 
 
@@ -93,6 +102,7 @@ public class ProfileDoctorFragment extends Fragment {
         txtUserPhone = view.findViewById(R.id.txtDoctorPhone);
         txtUserCnic = view.findViewById(R.id.txtDoctorCnic);
         btnEdit = view.findViewById(R.id.btnEdit);
+        profileImg = view.findViewById(R.id.docProfileImg);
 
         btnEdit.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -104,6 +114,15 @@ public class ProfileDoctorFragment extends Fragment {
                 intent.putExtra("email", txtUserEmail.getText().toString());
                 intent.putExtra("phone", txtUserPhone.getText().toString());
                 intent.putExtra("cnic", txtUserCnic.getText().toString());
+
+                //send image
+                profileImg.setDrawingCacheEnabled(true);
+                profileImg.buildDrawingCache();
+                Bitmap bitmap = profileImg.getDrawingCache();
+                intent.putExtra("image", bitmap);
+
+                startActivity(intent);
+
                 startActivity(intent);
 
             }
@@ -122,6 +141,24 @@ public class ProfileDoctorFragment extends Fragment {
                 txtUserEmail.setText(doctorInfoFirebase.getEmail());
                 txtUserPhone.setText(doctorInfoFirebase.getPhone());
                 txtUserCnic.setText(doctorInfoFirebase.getCnic());
+
+
+                //get image from firebase
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageReference = storage.getReference();
+                StorageReference profileRef = storageReference.child("ProfileImage/").child(uid);
+                profileRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    Glide.with(getContext())
+                            .load(uri)
+                            .transform(new CircleCrop())
+                            .into(profileImg);
+                });
+
+
+
 
 
             }

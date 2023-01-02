@@ -4,6 +4,7 @@ package com.example.pulmonarydisease.PatientDash;
 import static com.airbnb.lottie.network.FileExtension.JSON;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaRecorder;
 import android.net.Uri;
@@ -53,6 +54,7 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 
 import javax.security.auth.callback.Callback;
 
@@ -180,7 +182,7 @@ public class PatientDashFragment extends Fragment {
             }
         });
 
-//         Initializing the Record Button with press and hold functionality
+
 
         floatRecord.setOnTouchListener(
                 new View.OnTouchListener() {
@@ -196,39 +198,6 @@ public class PatientDashFragment extends Fragment {
                             Toast.makeText(getActivity(), "Recorded Sucessfully... Uploading & saved to Storage", Toast.LENGTH_SHORT).show();
                         }
                         return false;
-                        //check if symptoms have been added
-//                        if (SymptomsActivity.symptomsAdded == false) {
-//                            Toast.makeText(getActivity(), "Please add symptoms first", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            switch (event.getAction()) {
-//                                case MotionEvent.ACTION_DOWN:
-//                                    startRecording();
-//                                    recordingLabel.setText("Recording...");
-//                                    break;
-//                                case MotionEvent.ACTION_UP:
-//                                    stopRecording();
-//                                    recordingLabel.setText("Record");
-//                                    break;
-//                            }
-//                        }
-
-
-//                        Intent intent = getActivity().getIntent();
-//                        boolean recordCough = intent.getBooleanExtra("recordCough", false);
-//                        if (recordCough) {
-//                            switch (event.getAction()) {
-//                                case MotionEvent.ACTION_DOWN:
-//                                    startRecording();
-//                                    recordingLabel.setText("Recording...");
-//                                    break;
-//                                case MotionEvent.ACTION_UP:
-//                                    stopRecording();
-//                                    recordingLabel.setText("Record");
-//                                    break;
-//                            }
-//                        }
-
-
 
 
 
@@ -241,18 +210,8 @@ public class PatientDashFragment extends Fragment {
         return view;
 
     }
-//    private void startRecording() {
-//        //start on press and hold and stop on release
-//        //check if permission is granted
-//        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-//            //Passing an intent to record audio
-//            Intent intent = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
-//            startActivityForResult(intent, 1);
-//
-//        } else {
-//            requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1);
-//        }
-//    }
+
+
 
     private void startRecording() {
         recorder = new MediaRecorder();
@@ -260,6 +219,10 @@ public class PatientDashFragment extends Fragment {
         recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         recorder.setOutputFile(fileName);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        //length of recording
+
+
 
         try {
             recorder.prepare();
@@ -330,24 +293,18 @@ public class PatientDashFragment extends Fragment {
     private void sendForAnalysis(String json) {
 
 
-        //covid 19 api url
         String url = "https://coughAnalysis-api.herokuapp.com/coughAnalysis";
 
 
         RequestQueue queue = Volley.newRequestQueue(getActivity());
 
         Toast.makeText(getActivity(), "Sending for Analysis", Toast.LENGTH_SHORT).show();
+        coughResult.setText("Healthy");
 
         // Request a string response from the provided URL.
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
-
-                coughResult.setText("You are fit and Healthy");
-                coughReport.setText("Your Reports have been sent to Doctor");
-
-
 
                 JSONObject jsonObject = null;
 
@@ -357,11 +314,7 @@ public class PatientDashFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
                             //get the result from the api
-                            coughResult.setText("You are fit and Healthy");
                             String result = response.getString("result");
-
-                            coughReport.setText("Your Reports have been sent to Doctor");
-
 
                             //display the result
                             coughResult.setText(result);
@@ -380,38 +333,6 @@ public class PatientDashFragment extends Fragment {
         }, 5000);
 
 
-
-//        JSONObject jsonObject = null;
-//        try {
-//            jsonObject = new JSONObject(json);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//
-//
-//        }
-//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                //get the response from the api
-//                try {
-//                    Toast.makeText(getActivity(), "getting results", Toast.LENGTH_SHORT).show();
-//                    String result = response.getString("result");
-//                    //display the result
-//
-//                    Toast.makeText(getActivity(), "Sending for Analysis", Toast.LENGTH_SHORT).show();
-//
-//
-//                    Toast.makeText(getActivity(), result, Toast.LENGTH_SHORT).show();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
 
     }

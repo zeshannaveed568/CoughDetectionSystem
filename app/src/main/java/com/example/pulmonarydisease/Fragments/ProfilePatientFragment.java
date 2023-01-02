@@ -1,6 +1,7 @@
 package com.example.pulmonarydisease.Fragments;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.example.pulmonarydisease.EditActivity;
 import com.example.pulmonarydisease.Firebase.PatientInfoFirebase;
 import com.example.pulmonarydisease.QuestionaireActivity;
@@ -26,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -40,9 +44,9 @@ public class ProfilePatientFragment extends Fragment {
     DatabaseReference databaseReference;
     FirebaseUser user;
 
-    FirebaseStorage storage;
-
     ImageButton btnEdit;
+
+    CircleImageView profileImg;
 
 
     Button btnQuestionnaire;
@@ -102,9 +106,16 @@ public class ProfilePatientFragment extends Fragment {
         txtUserEmail = view.findViewById(R.id.txtPatientEmail);
         txtUserPhone = view.findViewById(R.id.txtPatientPhone);
         txtUserCnic = view.findViewById(R.id.txtPatientCnic);
+        profileImg = view.findViewById(R.id.profile_image);
+
+
+
+
 
 
         btnQuestionnaire = view.findViewById(R.id.btnQuestionnaire);
+
+
 
 
         btnQuestionnaire.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +142,13 @@ public class ProfilePatientFragment extends Fragment {
                 intent.putExtra("email", txtUserEmail.getText().toString());
                 intent.putExtra("phone", txtUserPhone.getText().toString());
                 intent.putExtra("cnic", txtUserCnic.getText().toString());
+
+                //send image
+                profileImg.setDrawingCacheEnabled(true);
+                profileImg.buildDrawingCache();
+                Bitmap bitmap = profileImg.getDrawingCache();
+                intent.putExtra("image", bitmap);
+
                 startActivity(intent);
 
 
@@ -155,9 +173,23 @@ public class ProfilePatientFragment extends Fragment {
                 txtUserPhone.setText(patientInfoFirebase.getPhone());
                 txtUserCnic.setText(patientInfoFirebase.getCnic());
 
+                //fetch image from firebase storage using url which is uploaded using glide library
 
+                //get Current User
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                //get Current User ID
+                String uid = user.getUid();
 
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageReference = storage.getReference().child("ProfileImage").child(uid);
 
+                storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                    // the image URL is stored in the "uri" variable
+                    Glide.with(getContext())
+                            .load(uri)
+                            .transform(new CircleCrop())
+                            .into(profileImg);
+                });
 
 
             }

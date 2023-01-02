@@ -16,7 +16,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_gravity="center_vertical"
-            android:id="@+id/doctorPatientImg"
+            android:id="@+id/listDoctorPatientImg"
             android:src="@drawable/user"
             android:layout_marginRight="20dp"
             android:layout_width="50dp"

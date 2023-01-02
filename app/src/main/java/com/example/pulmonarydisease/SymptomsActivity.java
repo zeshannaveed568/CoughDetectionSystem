@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -44,21 +46,10 @@ public class SymptomsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptoms);
 
+
         //Assigning variables to the submit button
 
         btnSymptoms = findViewById(R.id.btnSubmitSypmtoms);
-
-
-
-        //Send data to firebase for current user
-//
-//        mAuth = FirebaseAuth.getInstance();
-//        firebaseDatabase = FirebaseDatabase.getInstance();
-//        databaseReference = firebaseDatabase.getReference("Symptoms").child(mAuth.getCurrentUser().getUid());
-
-
-
-
 
 
 
@@ -67,9 +58,11 @@ public class SymptomsActivity extends AppCompatActivity {
 //        1
         rbFeverTrue = findViewById(R.id.trueFever);
         rbFeverFalse = findViewById(R.id.falseFever);
+
 //2
         rbCoughTrue = findViewById(R.id.trueCough);
         rbCoughFalse = findViewById(R.id.falseCough);
+
 //3
         rbBreathlessnessTrue = findViewById(R.id.trueBreathless);
         rbBreathlessnessFalse = findViewById(R.id.falseBreathless);
@@ -131,6 +124,343 @@ public class SymptomsActivity extends AppCompatActivity {
         rbNightSweatTrue = findViewById(R.id.trueNightSweats);
         getRbNightSweatFalse = findViewById(R.id.falseNightSweats);
 
+        rbFeverTrue.setChecked(LoadFromSharedPreference( "Fever1"));
+        rbFeverFalse.setChecked(LoadFromSharedPreference( "Fever2"));
+
+        rbCoughTrue.setChecked(LoadFromSharedPreference( "Cough1"));
+        rbCoughFalse.setChecked(LoadFromSharedPreference( "Cough2"));
+
+        rbBreathlessnessTrue.setChecked(LoadFromSharedPreference( "rbBreathlessnessTrue"));
+        rbBreathlessnessFalse.setChecked(LoadFromSharedPreference( "rbBreathlessnessFalse"));
+
+        rbSoreThroatTrue.setChecked(LoadFromSharedPreference( "rbSoreThroatTrue"));
+        rbSoreThroatFalse.setChecked(LoadFromSharedPreference( "rbSoreThroatFalse"));
+
+        rbRibTightnessTrue.setChecked(LoadFromSharedPreference( "rbRibTightnessTrue"));
+        rbRibTightnessFalse.setChecked(LoadFromSharedPreference( "rbRibTightnessFalse"));
+
+        rbWheezingTrue.setChecked(LoadFromSharedPreference( "rbWheezingTrue"));
+        getRbWheezingFalse.setChecked(LoadFromSharedPreference( "getRbWheezingFalse"));
+
+        rbRunningNoseTrue.setChecked(LoadFromSharedPreference( "rbRunningNoseTrue"));
+        rbRunningNoseFalse.setChecked(LoadFromSharedPreference( "rbRunningNoseFalse"));
+
+        rbDiarrheaTrue.setChecked(LoadFromSharedPreference( "rbDiarrheaTrue"));
+        rbDiarrheaFalse.setChecked(LoadFromSharedPreference( "rbDiarrheaFalse"));
+
+        rbVomitingTrue.setChecked(LoadFromSharedPreference( "rbVomitingTrue"));
+        rbVomitingFalse.setChecked(LoadFromSharedPreference( "rbVomitingFalse"));
+
+        rbLungFunctionTrue.setChecked(LoadFromSharedPreference( "rbLungFunctionTrue"));
+        rbLungFunctionFalse.setChecked(LoadFromSharedPreference( "rbLungFunctionFalse"));
+
+        rbWhoopingCoughTrue.setChecked(LoadFromSharedPreference( "rbWhoopingCoughTrue"));
+        rbWhoopingCoughFalse.setChecked(LoadFromSharedPreference( "rbWhoopingCoughFalse"));
+
+        rbPhlegmTrue.setChecked(LoadFromSharedPreference( "rbPhlegmTrue"));
+        rbPhlegmFalse.setChecked(LoadFromSharedPreference( "rbPhlegmFalse"));
+
+        rbNauseaTrue.setChecked(LoadFromSharedPreference( "rbNauseaTrue"));
+        rbNauseaFalse.setChecked(LoadFromSharedPreference( "rbNauseaFalse"));
+
+        rbHeartProblemTrue.setChecked(LoadFromSharedPreference( "rbHeartProblemTrue"));
+        rbHeartProblemFalse.setChecked(LoadFromSharedPreference( "rbHeartProblemFalse"));
+
+        rbBluishLipsTrue.setChecked(LoadFromSharedPreference( "rbBluishLipsTrue"));
+        rbBluishLipsFalse.setChecked(LoadFromSharedPreference( "rbBluishLipsFalse"));
+
+        rbCygnosisTrue.setChecked(LoadFromSharedPreference( "rbCygnosisTrue"));
+        rbCygnosisFalse.setChecked(LoadFromSharedPreference( "rbCygnosisFalse"));
+
+        rbHyperventilationTrue.setChecked(LoadFromSharedPreference( "rbHyperventilationTrue"));
+        rbHyperventilationFalse.setChecked(LoadFromSharedPreference( "rbHyperventilationFalse"));
+
+        rbChangeWeightTrue.setChecked(LoadFromSharedPreference( "rbChangeWeightTrue"));
+        rbChangeWeightFalse.setChecked(LoadFromSharedPreference( "rbChangeWeightFalse"));
+
+        rbDizzinessTrue.setChecked(LoadFromSharedPreference( "rbDizzinessTrue"));
+        rbDizzinessFalse.setChecked(LoadFromSharedPreference( "rbDizzinessFalse"));
+
+        rbDepressionTrue.setChecked(LoadFromSharedPreference( "rbDepressionTrue"));
+        rbDepressionFalse.setChecked(LoadFromSharedPreference( "rbDepressionFalse"));
+
+        rbSwellingTrue.setChecked(LoadFromSharedPreference( "rbSwellingTrue"));
+        rbSwellingFalse.setChecked(LoadFromSharedPreference( "rbSwellingFalse"));
+
+        rbNightSweatTrue.setChecked(LoadFromSharedPreference( "rbNightSweatTrue"));
+        getRbNightSweatFalse.setChecked(LoadFromSharedPreference( "getRbNightSweatFalse"));
+
+
+
+        //save to shared preferences
+        rbFeverTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("Fever1", isChecked);
+            }
+        });
+        rbFeverFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("Fever2", isChecked);
+            }
+        });
+
+        rbCoughTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("Cough1", isChecked);
+            }
+        });
+        rbCoughFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("Cough2", isChecked);
+            }
+        });
+
+        rbBreathlessnessTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbBreathlessnessTrue", isChecked);
+            }
+        });
+        rbBreathlessnessFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbBreathlessnessFalse", isChecked);
+            }
+        });
+        rbSoreThroatTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbSoreThroatTrue", isChecked);
+            }
+        });
+        rbSoreThroatFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbSoreThroatFalse", isChecked);
+            }
+        });
+        rbRibTightnessTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbRibTightnessTrue", isChecked);
+            }
+        });
+        rbRibTightnessFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbRibTightnessFalse", isChecked);
+            }
+        });
+        rbWheezingTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbWheezingTrue", isChecked);
+            }
+        });
+        getRbWheezingFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("getRbWheezingFalse", isChecked);
+            }
+        });
+        rbRunningNoseTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbRunningNoseTrue", isChecked);
+            }
+        });
+        rbRunningNoseFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbRunningNoseFalse", isChecked);
+            }
+        });
+        rbDiarrheaTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbDiarrheaTrue", isChecked);
+            }
+        });
+        rbDiarrheaFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbDiarrheaFalse", isChecked);
+            }
+        });
+        rbVomitingTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbVomitingTrue", isChecked);
+            }
+        });
+        rbVomitingFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbVomitingFalse", isChecked);
+            }
+        });
+        rbLungFunctionTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbLungFunctionTrue", isChecked);
+            }
+        });
+        rbLungFunctionFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbLungFunctionFalse", isChecked);
+            }
+        });
+        rbWhoopingCoughTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbWhoopingCoughTrue", isChecked);
+            }
+        });
+        rbWhoopingCoughFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbWhoopingCoughFalse", isChecked);
+            }
+        });
+        rbPhlegmTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbPhlegmTrue", isChecked);
+            }
+        });
+        rbPhlegmFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbPhlegmFalse", isChecked);
+            }
+        });
+        rbNauseaTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbNauseaTrue", isChecked);
+            }
+        });
+        rbNauseaFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbNauseaFalse", isChecked);
+            }
+        });
+        rbHeartProblemTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbHeartProblemTrue", isChecked);
+            }
+        });
+        rbHeartProblemFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbHeartProblemFalse", isChecked);
+            }
+        });
+        rbBluishLipsTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbBluishLipsTrue", isChecked);
+            }
+        });
+        rbBluishLipsFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbBluishLipsFalse", isChecked);
+            }
+        });
+        rbCygnosisTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbCygnosisTrue", isChecked);
+            }
+        });
+        rbCygnosisFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbCygnosisFalse", isChecked);
+            }
+        });
+        rbHyperventilationTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbHyperventilationTrue", isChecked);
+            }
+        });
+        rbHyperventilationFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbHyperventilationFalse", isChecked);
+            }
+        });
+        rbChangeWeightTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbChangeWeightTrue", isChecked);
+            }
+        });
+        rbChangeWeightFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbChangeWeightFalse", isChecked);
+            }
+        });
+        rbDizzinessTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbDizzinessTrue", isChecked);
+            }
+        });
+        rbDizzinessFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbDizzinessFalse", isChecked);
+            }
+        });
+        rbDepressionTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbDepressionTrue", isChecked);
+            }
+        });
+        rbDepressionFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbDepressionFalse", isChecked);
+            }
+        });
+        rbSwellingTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbSwellingTrue", isChecked);
+            }
+        });
+        rbSwellingFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbSwellingFalse", isChecked);
+            }
+        });
+        rbNightSweatTrue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("rbNightSweatTrue", isChecked);
+            }
+        });
+        getRbNightSweatFalse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SaveIntoSharedPreference("getRbNightSweatFalse", isChecked);
+            }
+        });
+
+
 
         //Firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -142,6 +472,10 @@ public class SymptomsActivity extends AppCompatActivity {
         //Submit button
         btnSymptoms = findViewById(R.id.btnSubmitSypmtoms);
 
+        //save radio button state in shared preferences
+
+
+
         //Submit button click listener
         btnSymptoms.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,6 +483,7 @@ public class SymptomsActivity extends AppCompatActivity {
                 //Put condition on Radio Buttons
 //                1
                 if (rbFeverTrue.isChecked()) {
+                    //Save radio button state in shared preferences
                     //send data to firebase for current user
                     databaseReference.child(mAuth.getCurrentUser().getUid()).child("Fever").setValue("True");
                 } else if (rbFeverFalse.isChecked()) {
@@ -169,16 +504,16 @@ public class SymptomsActivity extends AppCompatActivity {
                 }
 //      4
                 if (rbSoreThroatTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Sore Throat").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("SoreThroat").setValue("True");
                 } else if (rbSoreThroatFalse.isChecked()) {
                     databaseReference.child(mAuth.getCurrentUser().getUid()).child("Sore Throat").setValue("False");
                 }
 
 //5
                 if (rbRibTightnessTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Rib Tightness").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("RibTightness").setValue("True");
                 } else if (rbRibTightnessFalse.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Rib Tightness").setValue("False");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("RibTightness").setValue("False");
                 }
 //   6
                 if (rbWheezingTrue.isChecked()) {
@@ -188,9 +523,9 @@ public class SymptomsActivity extends AppCompatActivity {
                 }
 //      7
                 if (rbRunningNoseTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Running Nose").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("RunningNose").setValue("True");
                 } else if (rbRunningNoseFalse.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Running Nose").setValue("False");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("RunningNose").setValue("False");
                 }
 //         8
                 if (rbDiarrheaTrue.isChecked()) {
@@ -206,13 +541,13 @@ public class SymptomsActivity extends AppCompatActivity {
                 }
 //               10
                 if (rbLungFunctionTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Lung Function").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("LungFunction").setValue("True");
                 } else if (rbLungFunctionFalse.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Lung Function").setValue("False");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("LungFunction").setValue("False");
                 }
 // 11
                 if (rbWhoopingCoughTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Whooping Cough").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("WhoopingCough").setValue("True");
                 } else if (rbWhoopingCoughFalse.isChecked()) {
                     databaseReference.child(mAuth.getCurrentUser().getUid()).child("Whooping Cough").setValue("False");
                 }
@@ -232,15 +567,15 @@ public class SymptomsActivity extends AppCompatActivity {
 
                 //14
                 if (rbHeartProblemTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Heart Problem").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("HeartProblem").setValue("True");
                 } else if (rbHeartProblemFalse.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Heart Problem").setValue("False");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("HeartProblem").setValue("False");
                 }
 //15
                 if (rbBluishLipsTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Bluish Lips").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("BluishLips").setValue("True");
                 } else if (rbBluishLipsFalse.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Bluish Lips").setValue("False");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("BluishLips").setValue("False");
                 }
 //    16
                 if (rbCygnosisTrue.isChecked()) {
@@ -256,9 +591,9 @@ public class SymptomsActivity extends AppCompatActivity {
                 }
 //            18
                 if (rbChangeWeightTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Change Weight").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("ChangeWeight").setValue("True");
                 } else if (rbChangeWeightFalse.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Change Weight").setValue("False");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("ChangeWeight").setValue("False");
                 }
 //19
                 if (rbDizzinessTrue.isChecked()) {
@@ -274,9 +609,9 @@ public class SymptomsActivity extends AppCompatActivity {
                 }
 //        21
                 if (rbNightSweatTrue.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Night Sweat").setValue("True");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("NightSweat").setValue("True");
                 } else if (getRbNightSweatFalse.isChecked()) {
-                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("Night Sweat").setValue("False");
+                    databaseReference.child(mAuth.getCurrentUser().getUid()).child("NightSweat").setValue("False");
                 }
 
 //            22
@@ -293,14 +628,32 @@ public class SymptomsActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Data Saved Successfully", Toast.LENGTH_SHORT).show();
 
 
+
+
                 //Redirect to the previous Activity
-                Intent intent = new Intent(getApplicationContext(), PatientDashActivity.class);
-                startActivity(intent);
+                finish();
+
+
 
 
             }
         });
 
         }
+
+        private void SaveIntoSharedPreference(String key, Boolean value) {
+            SharedPreferences sharedPreferences = getSharedPreferences("SymptomsSp", MODE_PRIVATE);
+            SharedPreferences.Editor myEdit = sharedPreferences.edit();
+            myEdit.putBoolean(key, value);
+            myEdit.apply();
+        }
+
+        private boolean LoadFromSharedPreference(String key) {
+            SharedPreferences sharedPreferences = getSharedPreferences("SymptomsSp", MODE_PRIVATE);
+            return sharedPreferences.getBoolean(key, false);
+        }
+
+
+
     }
 

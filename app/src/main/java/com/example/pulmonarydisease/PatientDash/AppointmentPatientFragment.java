@@ -16,7 +16,10 @@ import com.example.pulmonarydisease.CreateAppointmentActivity;
 import com.example.pulmonarydisease.Firebase.Appointment;
 import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 public class AppointmentPatientFragment extends Fragment {
@@ -68,19 +71,44 @@ public class AppointmentPatientFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_appointment, container,false);
 
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userId = user.getUid();
+
+
+        //get current user email
+        String email = user.getEmail();
+
         //Recycler View
         appointmentRecyclerView = view.findViewById(R.id.appointmentPatientList);
         appointmentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FirebaseRecyclerOptions<Appointment> options =
-                    new FirebaseRecyclerOptions.Builder<Appointment>()
-                            .setQuery(FirebaseDatabase.getInstance().getReference().child("Appointments"), Appointment.class)
-                            .build();
+        Query query = FirebaseDatabase.getInstance().getReference().child("Appointments").orderByChild("patientEmail").equalTo(email);
 
+        FirebaseRecyclerOptions<Appointment> options =
+                new FirebaseRecyclerOptions.Builder<Appointment>()
+                .setQuery(query, Appointment.class)
+                .build();
 
 
         appointmentPatientAdapter = new AppointmentPatientAdapter(options);
         appointmentRecyclerView.setAdapter(appointmentPatientAdapter);
+
+
+
+
+
+//
+//
+//        FirebaseRecyclerOptions<Appointment> options =
+//                    new FirebaseRecyclerOptions.Builder<Appointment>()
+//                            .setQuery(FirebaseDatabase.getInstance().getReference().child("users"), Appointment.class)
+//                            .build();
+//
+//
+//
+//        appointmentPatientAdapter = new AppointmentPatientAdapter(options);
+//        appointmentRecyclerView.setAdapter(appointmentPatientAdapter);
 
 
 

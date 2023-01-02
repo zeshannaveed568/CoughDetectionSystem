@@ -79,6 +79,8 @@ public class PatientAdapter extends FirebaseRecyclerAdapter<PatientInfoFirebase,
 
     }
 
+
+
     public static class PatientViewHolder extends RecyclerView.ViewHolder {
 
         TextView patientName, patientEmail, patientType;

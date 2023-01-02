@@ -2,12 +2,12 @@ package com.example.pulmonarydisease.Firebase;
 
 public class Appointment {
 
-    String doctorName, etDate, etTime, patientName, patientAge, patientPhone, patientEmail;
+    String doctorName, etDate, etTime, patientName, patientAge, patientPhone, patientEmail, doctorEmail;
 
     public Appointment() {
     }
 
-    public Appointment(String patientName,String patientAge,String patientPhone, String patientEmail,String etDate, String etTime, String doctorName) {
+    public Appointment(String patientName,String patientAge,String patientPhone, String patientEmail,String etDate, String etTime, String doctorName, String doctorEmail) {
         this.doctorName = doctorName;
         this.etDate = etDate;
         this.etTime = etTime;
@@ -15,6 +15,7 @@ public class Appointment {
         this.patientAge = patientAge;
         this.patientPhone = patientPhone;
         this.patientEmail = patientEmail;
+        this.doctorEmail = doctorEmail;
     }
 
     public String getDoctorName() {
@@ -71,6 +72,14 @@ public class Appointment {
 
     public void setPatientEmail(String patientEmail) {
         this.patientEmail = patientEmail;
+    }
+
+    public String getDoctorEmail() {
+        return doctorEmail;
+    }
+
+    public void setDoctorEmail(String doctorEmail) {
+        this.doctorEmail = doctorEmail;
     }
 }
 

@@ -30,6 +30,7 @@ public class AppointmentDoctorAdapter extends FirebaseRecyclerAdapter<Appointmen
 
     @Override
     protected void onBindViewHolder(@NonNull AppointmentDoctorAdapter.AppointmentViewHolder holder, int position, @NonNull Appointment model) {
+
         holder.patientName.setText(model.getPatientName());
         holder.appointmentDate.setText(model.getEtDate());
         holder.appointmentTime.setText(model.getEtTime());

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="12dp"
     app:cardCornerRadius="12dp"
@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="20dp"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,6 +17,7 @@
         android:layout_marginLeft="16dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
+
             android:layout_gravity="center_vertical"
             android:id="@+id/doctorPatientImg"
             android:src="@drawable/user"
@@ -45,42 +46,29 @@
 
     </LinearLayout>
 
-    <Button
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:paddingHorizontal="50dp"
-        android:background="@drawable/transparent_bg_bordered_button"
-        android:text="Download PDF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
 
     <LinearLayout
+        android:layout_marginVertical="20dp"
         android:layout_marginRight="20dp"
         android:layout_gravity="right"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginVertical="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnReport"
-            android:layout_width="68dp"
-            android:layout_height="31dp"
-            android:background="@drawable/transparent_bg_bordered_button"
-            android:text="Full Report"
-            android:textSize="12dp" />
+
 
         <ImageView
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center_vertical"
             android:id="@+id/whatsappUser"
             android:background="@color/transparent"
             android:src="@drawable/whatsapp_logo"
-            android:layout_width="36dp"
-            android:layout_height="36dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
 
 
     </LinearLayout>
-
 
 
 

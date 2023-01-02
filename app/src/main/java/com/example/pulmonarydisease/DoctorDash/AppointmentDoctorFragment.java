@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.pulmonarydisease.Adapter.AppointmentDoctorAdapter;
 import com.example.pulmonarydisease.Adapter.AppointmentPatientAdapter;
 import com.example.pulmonarydisease.Firebase.Appointment;
+import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
 import com.example.pulmonarydisease.R;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,8 +31,6 @@ public class AppointmentDoctorFragment extends Fragment {
 
     RecyclerView appointmentRecyclerView;
     AppointmentDoctorAdapter appointmentDoctorAdapter;
-
-    DatabaseReference databaseReference;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -82,7 +81,11 @@ public class AppointmentDoctorFragment extends Fragment {
                 inflater.inflate(R.layout.fragment_appointment_doctor, container, false);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
+        String userId = user.getUid();
+
+
+        //get current user email
+        String email = user.getEmail();
 
 
         appointmentRecyclerView = view.findViewById(R.id.appointmentListDoctor);
@@ -90,10 +93,14 @@ public class AppointmentDoctorFragment extends Fragment {
 
 
 
+        Query query = FirebaseDatabase.getInstance().getReference().child("Appointments").orderByChild("doctorEmail").equalTo(email);
+
+
         FirebaseRecyclerOptions<Appointment> Options =
                 new FirebaseRecyclerOptions.Builder<Appointment>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Appointments"), Appointment.class)
+                        .setQuery(query, Appointment.class)
                         .build();
+
 
         appointmentDoctorAdapter = new AppointmentDoctorAdapter(Options);
         appointmentRecyclerView.setAdapter(appointmentDoctorAdapter);
