@@ -13,6 +13,7 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.pulmonarydisease.Adapter.CustomAdapterSpinner;
@@ -31,10 +32,12 @@ import java.util.Locale;
 
 public class CreateAppointmentActivity extends AppCompatActivity {
 
-    EditText etPatientName, etPatientAge, etPatientPhone, etPatientEmail,  etTime, etDoctorEmail;
+    EditText etPatientName, etPatientAge, etPatientPhone, etPatientEmail, etDoctorEmail;
     CalendarView etDate;
 
-    TextView tvDateSet;
+    TextView tvDateSet, tvTimeSet;
+
+    TimePicker timePicker;
 
     Spinner spnDoctorName;
 
@@ -64,7 +67,9 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         etPatientEmail = findViewById(R.id.patientEmailInput);
         etDate = findViewById(R.id.dateInput);
         tvDateSet = findViewById(R.id.dateInputSet);
+        tvTimeSet = findViewById(R.id.timeInputSet);
         etDoctorEmail = findViewById(R.id.doctorEmailInput);
+        timePicker = findViewById(R.id.timePicker);
 
 
 
@@ -77,6 +82,19 @@ public class CreateAppointmentActivity extends AppCompatActivity {
 
         //set current user email to patient email
         etPatientEmail.setText(userEmail);
+
+
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                //set time should be from 8Am to 5Pm
+                if (hourOfDay < 8 || hourOfDay > 17) {
+                    Toast.makeText(CreateAppointmentActivity.this, "Please choose time between 8Am to 5Pm", Toast.LENGTH_SHORT).show();
+                } else {
+                    tvTimeSet.setText(hourOfDay + ":" + minute);
+                }
+            }
+        });
 
         etDate.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -99,7 +117,6 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         });
 
 
-        etTime = findViewById(R.id.timeInput);
 
 
 
@@ -233,7 +250,7 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         String patientPhone = etPatientPhone.getText().toString();
 
         String date = tvDateSet.getText().toString();
-        String time = etTime.getText().toString();
+        String time = tvTimeSet.getText().toString();
 
         String patientEmail = userEmail.toLowerCase(Locale.ROOT);
         String doctorEmail = etDoctorEmail.getText().toString().toLowerCase(Locale.ROOT);
@@ -243,7 +260,7 @@ public class CreateAppointmentActivity extends AppCompatActivity {
 
         String doctorName = spnDoctorName.getSelectedItem().toString();
 
-        if (patientName.isEmpty() || patientAge.isEmpty() || patientPhone.isEmpty() || patientEmail.isEmpty() || date.isEmpty() || time.isEmpty() || doctorName.isEmpty()) {
+        if (patientName.isEmpty() || patientAge.isEmpty() || patientPhone.isEmpty() || patientEmail.isEmpty() || date.isEmpty() || time.isEmpty() || doctorName.isEmpty() || doctorEmail.isEmpty()) {
             Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
         } else {
 

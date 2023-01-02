@@ -101,9 +101,12 @@ public class LoginActivity extends AppCompatActivity {
             if (TextUtils.isEmpty(email)) {
                 edtEmail.setError("Email is required");
 
+                loadingDialogActivity.dismissDialog();
+
             }
             if (TextUtils.isEmpty(password)) {
                 edtPassword.setError("Password is required");
+                loadingDialogActivity.dismissDialog();
 
 
             } else {

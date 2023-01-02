@@ -15,11 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.pulmonarydisease.Firebase.DoctorInfoFirebase;
 import com.example.pulmonarydisease.R;
 import com.example.pulmonarydisease.Fragments.ReportFragment;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, DoctorAdapter.DoctorViewHolder> {
 
@@ -40,6 +47,7 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
         holder.doctorName.setText(model.getName());
         holder.doctorEmail.setText(model.getEmail());
         holder.doctorType.setText(model.getType());
+
 
 
         holder.whatsappDoc.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +104,8 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
 
         Button btnReport;
 
+        CircleImageView proImg;
+
         ImageView whatsappDoc;
 
 
@@ -110,6 +120,7 @@ public class DoctorAdapter extends FirebaseRecyclerAdapter<DoctorInfoFirebase, D
 
 
             btnReport = itemView.findViewById(R.id.btnReport);
+
 
 
         }

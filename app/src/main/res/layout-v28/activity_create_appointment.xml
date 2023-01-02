@@ -176,34 +176,43 @@
                 android:padding="12dp"
                 android:textColor="#525DAA" />
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:fontFamily="@font/senbold"
-                android:text="SELECT TIME"
-                android:textColor="#525DAA"
-                android:textSize="20sp" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:fontFamily="@font/senbold"
+                    android:text="SELECT TIME"
+                    android:textColor="#525DAA"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/timeInputSet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:fontFamily="@font/senbold"
+                    android:textColor="#525DAA"
+                    android:textSize="20sp" />
+
+
+
+            </LinearLayout>
 
 
             <TimePicker
+                android:id="@+id/timePicker"
                 android:outlineAmbientShadowColor="#525DAA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
 
-
-            <EditText
-                android:id="@+id/timeInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/transparent_bg_bordered_button"
-                android:fontFamily="@font/senregular"
-                android:hint="Enter Time"
-                android:inputType="time"
-                android:minHeight="45dp"
-                android:padding="12dp"
-                android:textColor="#525DAA" />
 
             <LinearLayout
                 android:orientation="horizontal"
